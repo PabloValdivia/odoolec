@@ -6,7 +6,7 @@
             <field name="name">tax_id_tree</field>
             <field name="model">lec.taxid.type</field>
             <field name="arch" type="xml">
-                <tree string="City" multi_edit="1">
+                <tree string="Tax ID Type" multi_edit="1">
                     <field name="code"/>
                     <field name="name"/>
                   <field name="min_length"/>
@@ -16,10 +16,10 @@
         </record>
 
     <record id="lec_taxpayertype_list" model="ir.ui.view">
-            <field name="name">tax_payer_tree</field>
+            <field name="name">taxpayer_tree</field>
             <field name="model">lec.tax.payer.type</field>
             <field name="arch" type="xml">
-                <tree string="City" multi_edit="1">
+                <tree string="TaxPayer Type" multi_edit="1">
                     <field name="code"/>
                     <field name="name"/>
                 </tree>
@@ -55,9 +55,9 @@
     <!-- taxpayer type form views  -->
         <record id="taxpayertype_view_form" model="ir.ui.view">
             <field name="name">TaxPayer Type</field>
-            <field name="model">lec.tax.payer.type</field>
+            <field name="model">lec.taxpayer.type</field>
             <field name="arch" type="xml">
-                <form string="Tax Payer Type">
+                <form string="TaxPayer Type">
                     <sheet>
                         <div class="oe_title">
                             <label for="name" string="Tax Payer Type" class="oe_edit_only"/>
@@ -73,6 +73,18 @@
             </field>
         </record>
 
+      <!-- Company Form extend
+      <record id="view_res_company_lec_form" model="ir.ui.view">
+          <field name="name">base.res.company</field>
+          <field name="model">res.company</field>
+          <field name="inherit_id" ref="base.view_company_form"/>
+          <field name="arch" type="xml">
+              <field name="tax_id_type"/>
+              <field name="tax_payer_type_id"/>
+          </field>
+    </record>
+    -->
+
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="taxidtype_action_window">
@@ -83,10 +95,9 @@
 
     <record model="ir.actions.act_window" id="taxpayertype_action_window">
       <field name="name">Tax Payer Type</field>
-      <field name="res_model">lec.tax.payer.type</field>
+      <field name="res_model">lec.taxpayer.type</field>
       <field name="view_mode">tree,form</field>
     </record>
-
 
     <!-- server action to the one above -->
 

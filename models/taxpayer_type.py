@@ -23,7 +23,7 @@ from odoo import api, fields, models
 
 
 class TaxPayerType(models.Model):
-    _name = "lec.tax.payer.type"
+    _name = "lec.taxpayer.type"
     _description = "Tax Payer Type"
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _check_company_auto = True
