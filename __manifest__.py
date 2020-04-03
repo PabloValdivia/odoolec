@@ -31,6 +31,7 @@
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
+        'views/company.xml',
         'data/payertype_data.xml',
     ],
     # only loaded in demonstration mode

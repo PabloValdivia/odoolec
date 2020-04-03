@@ -72,20 +72,7 @@
                 </form>
             </field>
         </record>
-
-      <!-- Company Form extend
-      <record id="view_res_company_lec_form" model="ir.ui.view">
-          <field name="name">base.res.company</field>
-          <field name="model">res.company</field>
-          <field name="inherit_id" ref="base.view_company_form"/>
-          <field name="arch" type="xml">
-              <field name="tax_id_type"/>
-              <field name="taxpayer_type_id"/>
-          </field>
-    </record>
-    -->
-
-
+      
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="taxidtype_action_window">
       <field name="name">Tax ID Type</field>
