@@ -17,7 +17,7 @@
 
     <record id="lec_taxpayertype_list" model="ir.ui.view">
             <field name="name">taxpayer_tree</field>
-            <field name="model">lec.tax.payer.type</field>
+            <field name="model">lec.taxpayer.type</field>
             <field name="arch" type="xml">
                 <tree string="TaxPayer Type" multi_edit="1">
                     <field name="code"/>
@@ -80,7 +80,7 @@
           <field name="inherit_id" ref="base.view_company_form"/>
           <field name="arch" type="xml">
               <field name="tax_id_type"/>
-              <field name="tax_payer_type_id"/>
+              <field name="taxpayer_type_id"/>
           </field>
     </record>
     -->

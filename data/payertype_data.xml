@@ -27,25 +27,25 @@
         </record>
 
         <!-- Tax Payer Type -->
-        <record id="tax_payer_type_ce" model="lec.tax.payer.type">
+        <record id="tax_payer_type_ce" model="lec.taxpayer.type">
             <field name="name">Contribuyente Especial</field>
             <field name="code">04</field>
         </record>
 
         <!-- Tax Payer Type -->
-        <record id="tax_payer_type_pn" model="lec.tax.payer.type">
+        <record id="tax_payer_type_pn" model="lec.taxpayer.type">
             <field name="name">Persona Natural Obligada Contabilidad</field>
             <field name="code">03</field>
         </record>
 
         <!-- Tax Payer Type -->
-        <record id="tax_payer_type_so" model="lec.tax.payer.type">
+        <record id="tax_payer_type_so" model="lec.taxpayer.type">
             <field name="name">Sociedad</field>
             <field name="code">02</field>
         </record>
 
          <!-- Tax Payer Type -->
-        <record id="tax_payer_type_pn" model="lec.tax.payer.type">
+        <record id="tax_payer_type_pn" model="lec.taxpayer.type">
             <field name="name">Persona Natural Emite Factura o Nota Venta</field>
             <field name="code">01</field>
         </record>
