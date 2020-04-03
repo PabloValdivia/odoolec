@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_odoo-lec_odoo-lec,odoo-lec.odoo-lec,model_odoo-lec_odoo-lec,base.group_user,1,1,1,1
+access_lec_tax_idtype,taxidtype.user,model_lec_taxid_type,base.group_user,1,1,1,1
+access_lec_tax_payer_type,taxpayertype.user,model_lec_tax_payer_type,base.group_user,1,1,1,1
+
