@@ -32,6 +32,7 @@
         'views/views.xml',
         'views/templates.xml',
         'views/company.xml',
+        'views/partner.xml',
         'data/payertype_data.xml',
     ],
     # only loaded in demonstration mode

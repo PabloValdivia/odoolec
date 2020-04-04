@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_partner_form_inherit_lec">
+        <field name="name">res.partner.lec.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="vat" position="before">
+                <field name="taxid_type" options="{'no_create': True}" required="1"/>
+                <field name="taxpayer_type" options="{'no_create': True}" required="1"/>
+            </field>
+        <field name="vat" position="replace">
+                <field name="vat" required="1" position="replace"/>
+        </field>
+        </field>
+    </record>
+</odoo>
