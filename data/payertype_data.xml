@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Tax ID Type -->
+        <record id="tax_payer_type_ce" model="lec.taxid.type">
+            <field name="name">CEDULA</field>
+            <field name="code">C</field>
+            <field name="min_length">10</field>
+            <field name="max_length">10</field>
+        </record>
+
+        <!-- Tax ID Type -->
+        <record id="tax_payer_type_pa" model="lec.taxid.type">
+            <field name="name">PASAPORTE</field>
+            <field name="code">P</field>
+            <field name="min_length">0</field>
+            <field name="max_length">0</field>
+        </record>
+
+        <!-- Tax ID Type -->
+        <record id="tax_payer_type_ru" model="lec.taxid.type">
+            <field name="name">RUC</field>
+            <field name="code">R</field>
+            <field name="min_length">13</field>
+            <field name="max_length">13</field>
+        </record>
+
+        <!-- Tax Payer Type -->
+        <record id="tax_payer_type_ce" model="lec.taxpayer.type">
+            <field name="name">Contribuyente Especial</field>
+            <field name="code">04</field>
+        </record>
+
+        <!-- Tax Payer Type -->
+        <record id="tax_payer_type_pn" model="lec.taxpayer.type">
+            <field name="name">Persona Natural Obligada Contabilidad</field>
+            <field name="code">03</field>
+        </record>
+
+        <!-- Tax Payer Type -->
+        <record id="tax_payer_type_so" model="lec.taxpayer.type">
+            <field name="name">Sociedad</field>
+            <field name="code">02</field>
+        </record>
+
+         <!-- Tax Payer Type -->
+        <record id="tax_payer_type_pn" model="lec.taxpayer.type">
+            <field name="name">Persona Natural Emite Factura o Nota Venta</field>
+            <field name="code">01</field>
+        </record>
+
+    </data>
+</odoo>
