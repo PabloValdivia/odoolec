@@ -23,7 +23,7 @@
 
     # any module necessary for this one to work correctly
     'depends': ['base',
-                'mail'
+                'mail',
                 'contacts'
                 ],
 
@@ -40,6 +40,7 @@
     'demo': [
         'demo/demo.xml',
     ],
+    'installable': True,
     'application': True,
-    'auto_install': False,
+    'auto_install': True,
 }
