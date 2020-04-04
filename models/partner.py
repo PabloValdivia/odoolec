@@ -28,3 +28,10 @@ class Partner(models.Model):
     taxid_type = fields.Many2one('lec.taxid.type', string='TaxID Type')
     taxpayer_type = fields.Many2one('lec.taxpayer.type', string='Tax Payer Type')
 
+    #@api.model
+    #def create(self, vals):
+    #    if 'vat' in vals:
+
+
+
+
