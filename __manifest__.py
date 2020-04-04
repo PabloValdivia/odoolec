@@ -24,6 +24,7 @@
     # any module necessary for this one to work correctly
     'depends': ['base',
                 'mail'
+                'contacts'
                 ],
 
     # always loaded
