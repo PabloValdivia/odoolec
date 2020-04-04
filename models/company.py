@@ -20,6 +20,7 @@
 ###############################################################################
 
 from odoo import api, fields, models
+from odoo.exceptions import AccessError, UserError, ValidationError
 
 
 class Company(models.Model):
@@ -27,3 +28,13 @@ class Company(models.Model):
 
     taxid_type = fields.Many2one('lec.taxid.type', string='TaxID Type')
     taxpayer_type = fields.Many2one('lec.taxpayer.type', string='Tax Payer Type')
+
+    @api.constrains('vat')
+    def check_vat(self):
+        tt = self.env['lec.taxid.type'].search([
+            ('id', '=', self.taxid_type.id)])
+
+        if len(self.vat) < tt.min_length:
+            raise UserError('tax id is minor than allowed')
+        elif len(self.vat) > tt.max_length:
+            raise UserError('tax id is major than allowed')
