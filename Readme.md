@@ -68,9 +68,7 @@ _Actualiza la lista de aplicaciones_
 
 ![](images/ActualizarListaDeApps.png)
 
-_Finalmente los módulos aparecerán en la lista de aplicaciones_
-
-_Busca e instala los módulos que necesites_
+_Finalmente los módulos aparecerán en la lista de aplicaciones. Busca e instala aquellos módulos que necesites_
 
 ## Contribuyendo 🖇️
 
@@ -93,5 +91,5 @@ También puedes mirar la lista de todos los [contribuyentes](https://github.com/
 * Comenta a otros sobre este proyecto 📢
 * Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
 * Da las gracias públicamente 🤓.
-* Recomiéndanos para soporte
+* Recomiéndanos para soporte 💼.
 * etc.
