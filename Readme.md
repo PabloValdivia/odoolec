@@ -1,6 +1,6 @@
 # Localización de Odoo para la empresa Ecuatoriana
 
-_Este proyecto se encuentra en su fase inicial donde se intenta desarrollar los módulos necesarios para que cualquier empresa Ecuatoriana pueda hacer uso de este ERP libre_
+_Este proyecto se encuentra en su fase inicial donde se intenta desarrollar los módulos necesarios para que cualquier empresa Ecuatoriana pueda hacer uso de este ERP libre._
 
 ## Comenzando 🚀
 
@@ -11,16 +11,16 @@ Mira la sección de **Desarrollo** para conocer como instalarlo.
 
 ### Pre-requisitos 📋
 
-_Que cosas necesitas para instalar el software y como instalarlas_
+_Que cosas necesitas para instalar el software y como instalarlas._
 
-##Odoo
+## Odoo
 
 | Version | Soportado?         |
 | ------- | ------------------ |
 | 13.0    | :white_check_mark: |
 | <=12.0  | :x:                |
 
-##Base de datos Postgres
+## Base de datos Postgres
 
 | Version | Soportado?         |
 | ------- | ------------------ |
