@@ -9,9 +9,6 @@
                 <field name="taxid_type" options="{'no_create': True}" required="1"/>
                 <field name="taxpayer_type" options="{'no_create': True}" required="1"/>
             </field>
-        <field name="vat" position="replace">
-                <field name="vat" required="1" position="replace"/>
-        </field>
         </field>
     </record>
 </odoo>
