@@ -90,18 +90,18 @@
 
     <!-- Top menu item -->
 
-    <menuitem name="Ecuador Localization" id="odoo-lec.menu_root"/>
+    <menuitem name="Ecuador Localization" id="odoo_lecmenu_root"/>
 
     <!-- menu categories -->
 
-    <menuitem name="Master Data" id="odoo-lec.menu_1" parent="odoo-lec.menu_root"/>
+    <menuitem name="Master Data" id="odoo-lecmenu_1" parent="odoo_lecmenu_root"/>
 
     <!-- actions -->
 
-    <menuitem name="TaxID Type" id="odoo-lec.menu_1_list" parent="odoo-lec.menu_1"
+    <menuitem name="TaxID Type" id="odoo-lecmenu_1_list" parent="odoo-lecmenu_1"
               action="taxidtype_action_window"/>
 
-    <menuitem name="Tax Payer Type" id="odoo-lec" parent="odoo-lec.menu_1"
+    <menuitem name="Tax Payer Type" id="odoo-lec_2_list" parent="odoo-lecmenu_1"
               action="taxpayertype_action_window"/>
   </data>
 </odoo>

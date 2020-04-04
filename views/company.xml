@@ -12,7 +12,6 @@
         <field name="vat" position="replace">
                 <field name="vat" required="1" position="replace"/>
         </field>
-
         </field>
     </record>
 </odoo>
