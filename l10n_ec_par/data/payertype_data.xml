@@ -3,25 +3,41 @@
     <data noupdate="1">
 
         <!-- Tax ID Type -->
-        <record id="tax_payer_type_ce" model="lec.taxid.type">
+        <record id="tax_payer_type_04" model="lec.taxid.type">
+            <field name="name">RUC</field>
+            <field name="code">04</field>
+            <field name="min_length">13</field>
+            <field name="max_length">13</field>
+        </record>
+
+        <!-- Tax ID Type -->
+        <record id="tax_payer_type_05" model="lec.taxid.type">
             <field name="name">CEDULA</field>
-            <field name="code">C</field>
+            <field name="code">05</field>
             <field name="min_length">10</field>
             <field name="max_length">10</field>
         </record>
 
         <!-- Tax ID Type -->
-        <record id="tax_payer_type_pa" model="lec.taxid.type">
+        <record id="tax_payer_type_06" model="lec.taxid.type">
             <field name="name">PASAPORTE</field>
-            <field name="code">P</field>
+            <field name="code">06</field>
             <field name="min_length">0</field>
             <field name="max_length">0</field>
         </record>
 
         <!-- Tax ID Type -->
-        <record id="tax_payer_type_ru" model="lec.taxid.type">
-            <field name="name">RUC</field>
-            <field name="code">R</field>
+        <record id="tax_payer_type_07" model="lec.taxid.type">
+            <field name="name">VENTA A CONSUMIDOR FINAL</field>
+            <field name="code">07</field>
+            <field name="min_length">13</field>
+            <field name="max_length">13</field>
+        </record>
+
+        <!-- Tax ID Type -->
+        <record id="tax_payer_type_08" model="lec.taxid.type">
+            <field name="name">IDENTIFICACION DELEXTERIOR</field>
+            <field name="code">08</field>
             <field name="min_length">13</field>
             <field name="max_length">13</field>
         </record>
