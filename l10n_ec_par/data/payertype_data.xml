@@ -36,7 +36,7 @@
 
         <!-- Tax ID Type -->
         <record id="tax_payer_type_08" model="lec.taxid.type">
-            <field name="name">IDENTIFICACION DELEXTERIOR</field>
+            <field name="name">IDENTIFICACION DEL EXTERIOR</field>
             <field name="code">08</field>
             <field name="min_length">13</field>
             <field name="max_length">13</field>
