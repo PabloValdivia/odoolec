@@ -27,76 +27,76 @@
         </record>
 
          <!-- Tax Payer Type -->
-        <record id="tax_payer_type_pn" model="lec.taxpayer.type">
+        <record id="tax_payer_type_01" model="lec.taxpayer.type">
             <field name="name">Persona Natural Emite Factura o Nota Venta</field>
             <field name="code">01</field>
         </record>
 
         <!-- Tax Payer Type -->
-        <record id="tax_payer_type_so" model="lec.taxpayer.type">
+        <record id="tax_payer_type_02" model="lec.taxpayer.type">
             <field name="name">Sociedad</field>
             <field name="code">02</field>
         </record>
 
          <!-- Tax Payer Type -->
-        <record id="tax_payer_type_pn" model="lec.taxpayer.type">
+        <record id="tax_payer_type_03" model="lec.taxpayer.type">
             <field name="name">Persona Natural Obligada Contabilidad</field>
             <field name="code">03</field>
         </record>
 
         <!-- Tax Payer Type -->
-        <record id="tax_payer_type_ce" model="lec.taxpayer.type">
+        <record id="tax_payer_type_04" model="lec.taxpayer.type">
             <field name="name">Contribuyente Especial</field>
             <field name="code">04</field>
         </record>
 
         <!-- Tax Payer Type -->
-        <record id="tax_payer_type_ex" model="lec.taxpayer.type">
+        <record id="tax_payer_type_05" model="lec.taxpayer.type">
             <field name="name">Extranjero</field>
             <field name="code">05</field>
         </record>
 
         <!-- Tax Payer Type -->
-        <record id="tax_payer_type_sp" model="lec.taxpayer.type">
+        <record id="tax_payer_type_06" model="lec.taxpayer.type">
             <field name="name">Sector Publico</field>
             <field name="code">06</field>
         </record>
 
         <!-- Tax Payer Type -->
-        <record id="tax_payer_type_sp" model="lec.taxpayer.type">
+        <record id="tax_payer_type_07" model="lec.taxpayer.type">
             <field name="name">Persona Natural Emite Liqui Compras B/S Arriendos Exter</field>
             <field name="code">07</field>
         </record>
 
         <!-- Tax Payer Type -->
-        <record id="tax_payer_type_pp" model="lec.taxpayer.type">
+        <record id="tax_payer_type_08" model="lec.taxpayer.type">
             <field name="name">Persona Natural Profesionales</field>
             <field name="code">08</field>
         </record>
 
         <!-- Tax Payer Type -->
-        <record id="tax_payer_type_ap" model="lec.taxpayer.type">
+        <record id="tax_payer_type_09" model="lec.taxpayer.type">
             <field name="name">Persona Natural Arrendamiento Bienes Inmuebles Propios</field>
             <field name="code">09</field>
         </record>
 
         <!-- Tax Payer Type -->
-        <record id="tax_payer_type_cc" model="lec.taxpayer.type">
+        <record id="tax_payer_type_10" model="lec.taxpayer.type">
             <field name="name">Contratante Servicios Construccion</field>
             <field name="code">10</field>
         </record>
 
         <!-- Tax Payer Type -->
-        <record id="tax_payer_type_se" model="lec.taxpayer.type">
+        <record id="tax_payer_type_11" model="lec.taxpayer.type">
             <field name="name">Companias Seguros y Reaseguros</field>
             <field name="code">11</field>
         </record>
 
         <!-- Tax Payer Type -->
-        <record id="tax_payer_type_ex" model="lec.taxpayer.type">
+        <record id="tax_payer_type_12" model="lec.taxpayer.type">
             <field name="name">Exportadores</field>
             <field name="code">12</field>
         </record>
-        
+
     </data>
 </odoo>
