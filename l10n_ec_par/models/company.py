@@ -26,15 +26,18 @@ from odoo.exceptions import AccessError, UserError, ValidationError
 class Company(models.Model):
     _inherit = 'res.company'
 
-    taxid_type = fields.Many2one('lec.taxid.type', string='TaxID Type')
-    taxpayer_type = fields.Many2one('lec.taxpayer.type', string='Tax Payer Type')
+    taxpayer_type = fields.Many2one('lec.taxpayer.type', related='partner_id.taxpayer_type', string='Tax Payer Type', inverse='_inverse_taxpayer')
 
     @api.constrains('vat')
     def check_vat(self):
-        tt = self.env['lec.taxid.type'].search([
-            ('id', '=', self.taxid_type.id)])
 
-        if len(self.vat) < tt.min_length:
+        if len(self.vat) < 13:
             raise UserError('tax id is minor than allowed')
-        elif len(self.vat) > tt.max_length:
+        elif len(self.vat) > 13:
             raise UserError('tax id is major than allowed')
+    
+    #The next method returns the value inserted in company and assign to the corresponding field
+    def _inverse_taxpayer(self):
+        for company in self:
+            company.partner_id.taxpayer_type = company.taxpayer_type
+
