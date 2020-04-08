@@ -22,22 +22,45 @@
 from odoo import api, fields, models
 from odoo.exceptions import AccessError, UserError, ValidationError
 
+import logging
+
+_logger = logging.getLogger(__name__)
 
 class Company(models.Model):
     _inherit = 'res.company'
 
-    taxpayer_type = fields.Many2one('lec.taxpayer.type', related='partner_id.taxpayer_type', string='Tax Payer Type', inverse='_inverse_taxpayer')
+    help = fields.Char(default='** Very large text that I need to display in the res.company form view if it is possible as one single line depending on the size of the view.', readonly=True)
+    #taxid_type = fields.Many2one('lec.taxid.type', default='tax_payer_type_04')
+    taxpayer_type = fields.Many2one('lec.taxpayer.type', related='partner_id.taxpayer_type', string='Tax Payer Type', compute='_compute_taxpayertype', inverse='_inverse_taxpayer')
 
     @api.constrains('vat')
     def check_vat(self):
-
         if len(self.vat) < 13:
-            raise UserError('tax id is minor than allowed')
+            raise UserError('tax id is minor than allowed company')
         elif len(self.vat) > 13:
             raise UserError('tax id is major than allowed')
     
-    #The next method returns the value inserted in company and assign to the corresponding field
+    #The next method returns the value inserted in res.partner taxpayer_type field and assign to respective field
+    # in the res.company form
     def _inverse_taxpayer(self):
         for company in self:
             company.partner_id.taxpayer_type = company.taxpayer_type
+
+    #The next method set and assign the value inserted in res.company to the corresponding field in its respective  
+    # partner's contact payertype in res.partner.
+    @api.model
+    def create(self, vals):
+        if not vals.get('name') or vals.get('partner_id'):
+            self.clear_caches()
+            return super(Company, self).create(vals)
+        partner = self.env['res.partner'].create({
+            'taxpayer_type': vals.get('taxpayer_type'),
+        })
+        # compute stored fields, for example address dependent fields
+        partner.flush()
+        vals['partner_id'] = partner.id
+        self.clear_caches()
+        company = super(Company, self).create(vals)
+        return company
+
 

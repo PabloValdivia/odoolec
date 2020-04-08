@@ -31,32 +31,15 @@ class Partner(models.Model):
 
     @api.constrains('vat', 'taxid_type', 'taxpayer_type')
     def check_vat(self):
+
         for record in self:
-            if record.vat == False or len(record.vat) < 13:
-                raise ValidationError('Tax id is minor than allowed')
-            elif len(record.vat) > 13:
-                raise ValidationError('Tax id is major than allowed')
+            if record.vat:
+                tt = record.env['lec.taxid.type'].search([
+                    ('id', '=', record.taxid_type.id)])
+                if tt.min_length > 0 or tt.max_length > 0:
+                    if record.vat == False or len(record.vat) < tt.min_length:
+                        raise ValidationError('Tax id is minor than allowed')
+                    elif len(record.vat) > tt.max_length:
+                        raise ValidationError('Tax id is major than allowed')
 
-    
-#    def _inverse_taxpayer(self):
-#        for company in self:
-#            company.partner_id.taxpayer_type = company.taxpayer_type
-            
-#            tt = record.env['lec.taxid.type'].search([
-#                ('id', '=', record.taxid_type.id)])
-#            if tt.id == 0:
-#                raise ValidationError('Tax id type is mandatory')
 
-#            if tt.min_length > 0 or tt.max_length > 0:
-
-#                if record.vat == False or len(record.vat) < tt.min_length:
-#                    raise ValidationError('Tax id is minor than allowed')
-#                elif len(record.vat) > tt.max_length:
-#                    raise ValidationError('Tax id is major than allowed')
-
-#            if record.commercial_partner_id.id == record.id:
-
-#                if record.taxpayer_type.id == 0:
-#                    raise ValidationError('Taxpayer type is mandatory')
-
-                
