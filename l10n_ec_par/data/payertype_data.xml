@@ -8,6 +8,7 @@
             <field name="code">04</field>
             <field name="min_length">13</field>
             <field name="max_length">13</field>
+            <field name="default">True</field>
         </record>
 
         <!-- Tax ID Type -->

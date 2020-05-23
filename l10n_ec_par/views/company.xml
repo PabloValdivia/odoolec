@@ -6,9 +6,9 @@
         <field name="inherit_id" ref="base.view_company_form"/>
         <field name="arch" type="xml">
             <field name="partner_id" position="before">
-                <field name="taxid_type" options="{'no_create': True}"/>
-                <field name="taxpayer_type" options="{'no_create': True}"/>
+                <field name="taxpayer_type" required="1" options="{'no_create': True}"/>
             </field>
         </field>
     </record>
 </odoo>
+
