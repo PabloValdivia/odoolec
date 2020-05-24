@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sri_parameters_form_view" model="ir.ui.view">
+            <field name="name">sri_parameters.form</field>
+            <field name="model">sri.parameters</field>
+            <field name="arch" type="xml">
+                <form string="SRI Parameters">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for=""/>
+                            <h1>
+
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+
+                                <field name="site_base_test"/>
+                                <field name="ws_test_url"/>
+                                <field name="ws_test_auth"/>
+                            </group>
+                            <group>
+                                <field name="site_base_prod"/>
+                                <field name="ws_prod_url"/>
+                                <field name="ws_prod_auth"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="sri_parameteres_tree_view" model="ir.ui.view">
+            <field name="name">sri_paramaters.tree</field>
+            <field name="model">sri.parameters</field>
+            <field name="arch" type="xml">
+                <tree string="ModelTitle">
+                    <field name="ws_test_url"/>
+                    <field name="ws_test_url"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="sri_parameters_actions" model="ir.actions.act_window">
+            <field name="name">SRI Parameters</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sri.parameters</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+
+                </p>
+            </field>
+        </record>
+        <menuitem name="SRI Parameters" id="sri_parameters_menu" parent="l10n_ec_par.odoo-lecmenu_1" action="sri_parameters_actions"/>
+    </data>
+</odoo>

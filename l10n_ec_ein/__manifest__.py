@@ -26,13 +26,17 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
+        'data/data.xml',
         'views/views.xml',
         'views/templates.xml',
         'views/res_company_ei.xml',
         'views/res_partner.xml',
         'views/sri_authorization.xml',
-        'views/sri_error_code.xml'
+        'views/sri_error_code.xml',
+        'views/account_journal.xml',
+        'views/account_move.xml',
+        'views/sri_parameters.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
