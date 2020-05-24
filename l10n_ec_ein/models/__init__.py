@@ -1,3 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from . import models
+from . import company
+from . import einvoice
+from . import partner
+from . import sri_authorization

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="einvoice_partner_form_inherit" model="ir.ui.view">
+            <field name="name">einvoice_partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='mobile']" position="after">
+                    <field name="notify_invoice" attrs="{'invisible': [('parent_id', '=', False)]}"/>
+                    <field name="notify_shipment" attrs="{'invisible': [('parent_id', '=', False)]}"/>
+                    <field name="notify_withholding" attrs="{'invisible': [('parent_id', '=', False)]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
