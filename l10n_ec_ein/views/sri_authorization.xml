@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sri_authorization_form_view" model="ir.ui.view">
+            <field name="name">sri_authorization.form</field>
+            <field name="model">sri.authorization</field>
+            <field name="arch" type="xml">
+                <form string="SRI Authorization">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="sri_authorization_code"/>
+                            <h1>
+                                <field name="sri_authorization_code" placeholder="Code"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="sri_authorization_date"/>
+                            </group>
+                            <group>
+                                <field name="account_move"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="sri_authorization_tree_view" model="ir.ui.view">
+            <field name="name">sri_authorization.tree</field>
+            <field name="model">sri.authorization</field>
+            <field name="arch" type="xml">
+                <tree string="ModelTitle">
+                    <field name="sri_authorization_date"/>
+                    <field name="sri_authorization_code"/>
+                    <field name="processed"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="sri_authorization_act_window" model="ir.actions.act_window">
+            <field name="name">SRI Authorization</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sri.authorization</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="SRI Authorizations" id="sri_authorization_menu" parent="l10n_ec_par.odoo_lecmenu_root" action="sri_authorization_act_window"/>
+
+    </data>
+</odoo>

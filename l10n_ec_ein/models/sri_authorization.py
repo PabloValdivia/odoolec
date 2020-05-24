@@ -19,6 +19,16 @@ class SriAuthorization (models.Model):
 
     account_move = fields.Many2one('account.move', string='Invoice Related')
 
+    error_code = fields.Selection(
+        [
+            ('2', 'RUC del emisor NO se encuentra ACTIVO'),
+            ('2', 'Production')
+        ],
+        string='Environment Type',
+        required=True,
+    )
+
+
     
 
 
