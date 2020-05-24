@@ -32,5 +32,7 @@ class TaxIDType(models.Model):
     name = fields.Char('name')
     min_length = fields.Integer('min_length')
     max_length = fields.Integer('max_length')
+    default = fields.Boolean('default', default=False)
+
 
 
