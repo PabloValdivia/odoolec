@@ -12,3 +12,14 @@ class SriParameters(models.Model):
     ws_prod_url = fields.Char(string='SRI WS production url')
     ws_prod_auth = fields.Char(string='SRI WS production auth')
 
+
+class SriPaymentType(models.Model):
+    _name = 'sri.payment_type'
+    _description = 'SRI Payment type'
+
+    code = fields.Char()
+    name = fields.Char()
+    start_date = fields.Date(string='Start Date')
+    end_date = fields.Date(string='End Date')
+
+

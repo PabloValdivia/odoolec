@@ -205,7 +205,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_ec_par.field_lec_taxid_type__message_has_error_counter
 #: model:ir.model.fields,field_description:l10n_ec_par.field_lec_taxpayer_type__message_has_error_counter
 msgid "Number of errors"
-msgstr ""
+msgstr "Número de errores"
 
 #. module: l10n_ec_par
 #: model:ir.model.fields,help:l10n_ec_par.field_lec_taxid_type__message_needaction_counter
@@ -229,13 +229,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_ec_par.field_lec_taxid_type__activity_user_id
 #: model:ir.model.fields,field_description:l10n_ec_par.field_lec_taxpayer_type__activity_user_id
 msgid "Responsible User"
-msgstr ""
+msgstr "Usuario Responsable"
 
 #. module: l10n_ec_par
 #: model:ir.model.fields,field_description:l10n_ec_par.field_lec_taxid_type__message_has_sms_error
 #: model:ir.model.fields,field_description:l10n_ec_par.field_lec_taxpayer_type__message_has_sms_error
 msgid "SMS Delivery error"
-msgstr ""
+msgstr "Error envió SMS"
 
 #. module: l10n_ec_par
 #: model:ir.model.fields,help:l10n_ec_par.field_lec_taxid_type__activity_state

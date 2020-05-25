@@ -19,5 +19,54 @@
             <field name="ws_prod_auth">https://cel.sri.gob.ec/comprobantes-electronicos-ws/AutorizacionComprobantesOffline?wsdl</field>
         </record>
 
+        <!-- SRI Payment Type-->
+        <record id="paymentType1" model="sri.payment_type">
+            <field name="code">01</field>
+            <field name="name">SIN UTILIZACION DEL SISTEMA FINANCIERO</field>
+            <field name="start_date">2013-01-01</field>
+        </record>
+
+        <record id="paymentType2" model="sri.payment_type">
+            <field name="code">15</field>
+            <field name="name">COMPENSACIÓN DE DEUDAS</field>
+            <field name="start_date">2013-01-01</field>
+        </record>
+
+        <record id="paymentType3" model="sri.payment_type">
+            <field name="code">16</field>
+            <field name="name">TARJETA DE DÉBITO</field>
+            <field name="start_date">2016-06-01</field>
+        </record>
+
+        <record id="paymentType4" model="sri.payment_type">
+            <field name="code">17</field>
+            <field name="name">DINERO ELECTRÓNICO</field>
+            <field name="start_date">2016-06-01</field>
+        </record>
+
+        <record id="paymentType5" model="sri.payment_type">
+            <field name="code">18</field>
+            <field name="name">TARJETA PREPAGO</field>
+            <field name="start_date">2016-06-01</field>
+        </record>
+
+        <record id="paymentType6" model="sri.payment_type">
+            <field name="code">19</field>
+            <field name="name">TARJETA DE CRÉDITO</field>
+            <field name="start_date">2016-06-01</field>
+        </record>
+
+        <record id="paymentType7" model="sri.payment_type">
+            <field name="code">20</field>
+            <field name="name">OTROS CON UTILIZACION DEL SISTEMA FINANCIERO</field>
+            <field name="start_date">2016-06-01</field>
+        </record>
+
+        <record id="paymentType8" model="sri.payment_type">
+            <field name="code">21</field>
+            <field name="name">ENDOSO DE TÍTULOS</field>
+            <field name="start_date">2016-06-01</field>
+        </record>
+
     </data>
 </odoo>

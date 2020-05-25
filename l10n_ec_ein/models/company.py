@@ -24,4 +24,26 @@ class Company(models.Model):
         default='1'
     )
 
+    is_force_keep_accounting = fields.Selection(
+        [
+            ('SI', 'Yes'),
+            ('NO', 'No')
+        ],
+        string = 'Keep Accounting',
+        required='True',
+        default='NO'
+    )
+
+    is_special_taxpayer = fields.Selection(
+        [
+            ('284', 'Yes'),
+            ('000', 'No')
+        ],
+        string='Special TaxPayer',
+        required='True',
+        default='000'
+    )
+
+
+
 

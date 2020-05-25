@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-24 23:05+0000\n"
-"PO-Revision-Date: 2020-05-24 23:05+0000\n"
+"POT-Creation-Date: 2020-05-25 02:00+0000\n"
+"PO-Revision-Date: 2020-05-25 02:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,6 +17,7 @@ msgstr ""
 
 #. module: l10n_ec_ein
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_errorcode__code
+#: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_payment_type__code
 #: model_terms:ir.ui.view,arch_db:l10n_ec_ein.sri_authorization_form_view
 msgid "Code"
 msgstr "Código"
@@ -35,6 +36,7 @@ msgstr "Contacto"
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_authorization__create_uid
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_errorcode__create_uid
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_parameters__create_uid
+#: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_payment_type__create_uid
 msgid "Created by"
 msgstr "Creado Por"
 
@@ -42,6 +44,7 @@ msgstr "Creado Por"
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_authorization__create_date
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_errorcode__create_date
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_parameters__create_date
+#: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_payment_type__create_date
 msgid "Created on"
 msgstr "Creado en"
 
@@ -49,8 +52,9 @@ msgstr "Creado en"
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_authorization__display_name
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_errorcode__display_name
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_parameters__display_name
+#: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_payment_type__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nombre"
 
 #. module: l10n_ec_ein
 #: model_terms:ir.ui.view,arch_db:l10n_ec_ein.view_res_company_ei_form
@@ -68,6 +72,11 @@ msgid "Electronic Signature"
 msgstr "Firma Electronica"
 
 #. module: l10n_ec_ein
+#: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_payment_type__end_date
+msgid "End Date"
+msgstr "Fecha Fin"
+
+#. module: l10n_ec_ein
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_res_company__env_service
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_authorization__env_service
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_authorization__error_code
@@ -83,6 +92,7 @@ msgstr "Código de error"
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_authorization__id
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_errorcode__id
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_parameters__id
+#: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_payment_type__id
 msgid "ID"
 msgstr ""
 
@@ -107,9 +117,15 @@ msgid "Journal Entries"
 msgstr "Asientos contables"
 
 #. module: l10n_ec_ein
+#: model:ir.model.fields,field_description:l10n_ec_ein.field_res_company__is_force_keep_accounting
+msgid "Keep Accounting"
+msgstr "Obligado a llevar Contabilidad"
+
+#. module: l10n_ec_ein
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_authorization____last_update
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_errorcode____last_update
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_parameters____last_update
+#: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_payment_type____last_update
 msgid "Last Modified on"
 msgstr "Ultima modificación"
 
@@ -117,6 +133,7 @@ msgstr "Ultima modificación"
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_authorization__write_uid
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_errorcode__write_uid
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_parameters__write_uid
+#: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_payment_type__write_uid
 msgid "Last Updated by"
 msgstr "Ultima Actualización por"
 
@@ -124,13 +141,26 @@ msgstr "Ultima Actualización por"
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_authorization__write_date
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_errorcode__write_date
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_parameters__write_date
+#: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_payment_type__write_date
 msgid "Last Updated on"
 msgstr "Ultima Actualización en"
 
 #. module: l10n_ec_ein
+#: model_terms:ir.ui.view,arch_db:l10n_ec_ein.sri_authorization_tree_view
+msgid "ModelTitle"
+msgstr ""
+
+#. module: l10n_ec_ein
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_errorcode__name
+#: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_payment_type__name
 msgid "Name"
 msgstr "Nombre"
+
+#. module: l10n_ec_ein
+#: model:ir.model.fields.selection,name:l10n_ec_ein.selection__res_company__is_force_keep_accounting__no
+#: model:ir.model.fields.selection,name:l10n_ec_ein.selection__res_company__is_special_taxpayer__000
+msgid "No"
+msgstr ""
 
 #. module: l10n_ec_ein
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_authorization__processed
@@ -168,9 +198,23 @@ msgstr "Código de error SRI"
 #: model:ir.actions.act_window,name:l10n_ec_ein.sri_parameters_actions
 #: model:ir.model,name:l10n_ec_ein.model_sri_parameters
 #: model:ir.ui.menu,name:l10n_ec_ein.sri_parameters_menu
+#: model_terms:ir.ui.view,arch_db:l10n_ec_ein.sri_parameteres_tree_view
 #: model_terms:ir.ui.view,arch_db:l10n_ec_ein.sri_parameters_form_view
 msgid "SRI Parameters"
 msgstr "Parametros SRI"
+
+#. module: l10n_ec_ein
+#: model:ir.actions.act_window,name:l10n_ec_ein.sri_payment_actions
+#: model:ir.ui.menu,name:l10n_ec_ein.sri_payment_menu
+#: model_terms:ir.ui.view,arch_db:l10n_ec_ein.sri_payment_tree_view
+#: model_terms:ir.ui.view,arch_db:l10n_ec_ein.view_sri_payment_type_form
+msgid "SRI Payment Type"
+msgstr "Forma de pago SRI"
+
+#. module: l10n_ec_ein
+#: model:ir.model,name:l10n_ec_ein.model_sri_payment_type
+msgid "SRI Payment type"
+msgstr "Forma de pago SRI"
 
 #. module: l10n_ec_ein
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_parameters__ws_prod_auth
@@ -203,6 +247,11 @@ msgid "Site Base Test"
 msgstr "Sitio Base Pruebas"
 
 #. module: l10n_ec_ein
+#: model:ir.model.fields,field_description:l10n_ec_ein.field_res_company__is_special_taxpayer
+msgid "Special TaxPayer"
+msgstr ""
+
+#. module: l10n_ec_ein
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_account_move__sri_authorization
 msgid "Sri Authorization"
 msgstr "Autorización SRI"
@@ -218,10 +267,26 @@ msgid "Sri Authorization Date"
 msgstr "Fecha Autorización"
 
 #. module: l10n_ec_ein
+#: model:ir.model.fields,field_description:l10n_ec_ein.field_account_move__sri_payment_type
+msgid "Sri Payment Type"
+msgstr "Forma de pago SRI"
+
+#. module: l10n_ec_ein
+#: model:ir.model.fields,field_description:l10n_ec_ein.field_sri_payment_type__start_date
+msgid "Start Date"
+msgstr "Fecha Inicio"
+
+#. module: l10n_ec_ein
 #: model:ir.model.fields.selection,name:l10n_ec_ein.selection__res_company__env_service__1
 #: model:ir.model.fields.selection,name:l10n_ec_ein.selection__sri_authorization__env_service__1
 msgid "Test"
 msgstr "Pruebas"
+
+#. module: l10n_ec_ein
+#: model:ir.model.fields.selection,name:l10n_ec_ein.selection__res_company__is_force_keep_accounting__si
+#: model:ir.model.fields.selection,name:l10n_ec_ein.selection__res_company__is_special_taxpayer__284
+msgid "Yes"
+msgstr "Si"
 
 #. module: l10n_ec_ein
 #: model:ir.model.fields,field_description:l10n_ec_ein.field_res_partner__notify_invoice
