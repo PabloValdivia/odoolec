@@ -3,8 +3,8 @@ import os
 from jinja2 import FileSystemLoader
 
 from odoo import fields, models, api
-from odoo.odoo.api import Environment
-from odoo.odoo.exceptions import UserError
+from odoo.api import Environment
+from odoo.exceptions import UserError
 from . import utils
 from ..xades.sri import DocumentXML
 from ..xades.xades import Xades
