@@ -2,16 +2,6 @@
 
 import requests
 
-
-tipoDocumento = {
-    '01': '01',
-    '04': '04',
-    '05': '05',
-    '06': '06',
-    '07': '07',
-    '18': '01',
-}
-
 tipoIdentificacion = {
     'ruc': '04',
     'cedula': '05',
@@ -36,11 +26,9 @@ tabla17 = {
 }
 
 tabla18 = {
-    '0': '0',
-    '12': '2',
-    '14': '3',
-    'novat': '6',
-    'excento': '7'
+    0: '0',
+    12: '2',
+    14: '3'
 }
 
 tabla20 = {
@@ -76,20 +64,13 @@ tarifaImpuesto = {
 MSG_SCHEMA_INVALID = u"El sistema generó el XML pero"
 " el comprobante electrónico no pasa la validación XSD del SRI."
 
-SITE_BASE_TEST = 'https://celcer.sri.gob.ec/'
-SITE_BASE_PROD = 'https://cel.sri.gob.ec/'
-WS_TEST_RECEIV = 'https://celcer.sri.gob.ec/comprobantes-electronicos-ws/RecepcionComprobantesOffline?wsdl'  # noqa
-WS_TEST_AUTH = 'https://celcer.sri.gob.ec/comprobantes-electronicos-ws/AutorizacionComprobantesOffline?wsdl'  # noqa
-WS_RECEIV = 'https://cel.sri.gob.ec/comprobantes-electronicos-ws/RecepcionComprobantesOffline?wsdl'  # noqa
-WS_AUTH = 'https://cel.sri.gob.ec/comprobantes-electronicos-ws/AutorizacionComprobantesOffline?wsdl'  # noqa
 
-
-def check_service(env='prueba'):
+def check_service(env, url):
     flag = False
-    if env == 'prueba':
-        URL = WS_TEST_RECEIV
+    if env == 'test':
+        URL = url
     else:
-        URL = WS_RECEIV
+        URL = url
 
     for i in [1, 2, 3]:
         try:
@@ -98,3 +79,15 @@ def check_service(env='prueba'):
         except requests.exceptions.RequestException:
             return flag, False
     return flag, res
+
+def get_authorisation(type_document):
+    map_type = {
+                'out_invoice': '18',
+                'in_invoice': '01',
+                'out_refund': '04',
+                'in_refund': '05',
+                'liq_purchase': '03',
+                'ret_in_invoice': '07',
+            }
+    code = map_type[type_document]
+    return code

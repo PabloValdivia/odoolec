@@ -1,14 +1,17 @@
+import base64
+import itertools
 import os
+from io import StringIO
 
-from jinja2 import FileSystemLoader
+from jinja2 import FileSystemLoader, PackageLoader
 
 from odoo import fields, models, api
 from odoo.odoo.api import Environment
 from odoo.odoo.exceptions import UserError
 from . import utils
-from ..xades.sri import DocumentXML
+from ..xades.sri import DocumentXML, SriService
 from ..xades.xades import Xades
-import datetime, time
+
 
 class Invoice(models.Model):
     _inherit = 'account.move'
@@ -17,25 +20,21 @@ class Invoice(models.Model):
         'out_refund': 'out_refund.xml'
     }
 
+    SriServiceObj = SriService()
+
     sri_authorization = fields.Many2one('sri.authorization')
     sri_payment_type = fields.Many2one('sri.payment_type')
 
     def _info_invoice(self):
         """
         """
-
-        def fix_date(date):
-            d = time.strftime('%d/%m/%Y',
-                              time.strptime(date, '%Y-%m-%d'))
-            return d
-
         company = self.company_id
         partner = self.partner_id
         infoFactura = {
-            'fechaEmision': fix_date(self.invoice_date),
+            'fechaEmision': self.invoice_date.strftime("%d%m%Y"),
             'dirEstablecimiento': company.street2,
-            'obligadoContabilidad': 'SI',
-            'tipoIdentificacionComprador': utils.tipoIdentificacion[partner.taxid_type],  # noqa
+            'obligadoContabilidad': company.is_force_keep_accounting,
+            'tipoIdentificacionComprador': partner.taxid_type.code,  # noqa
             'razonSocialComprador': partner.name,
             'identificacionComprador': partner.vat,
             'totalSinImpuestos': '%.2f' % (self.amount_untaxed),
@@ -43,48 +42,36 @@ class Invoice(models.Model):
             'propina': '0.00',
             'importeTotal': '{:.2f}'.format(self.amount_total),
             'moneda': 'DOLAR',
-            'formaPago': invoice.epayment_id.code,
-            'valorRetIva': '{:.2f}'.format(invoice.taxed_ret_vatsrv + invoice.taxed_ret_vatb),  # noqa
-            'valorRetRenta': '{:.2f}'.format(invoice.amount_tax_ret_ir)
+            'formaPago': self.sri_payment_type.code,
+            'valorRetIva': '0.00',  # noqa
+            'valorRetRenta': '0.00',
+            'contribuyenteEspecial': company.is_special_taxpayer
         }
-        if company.company_registry:
-            infoFactura.update({'contribuyenteEspecial':
-                                    company.company_registry})
-        else:
-            raise UserError('No ha determinado si es contribuyente especial.')
 
         totalConImpuestos = []
-        for tax in self.tax_line_ids:
-            if self.group_id.code in ['vat', 'vat0', 'ice']:
+        for lines in self.invoice_line_ids:
+            code = lines.tax_ids.sri_tax_type
+            percent = int(lines.tax_ids.amount)
+            if code in ['vat', 'vat0', 'ice']:
                 totalImpuesto = {
-                    'codigo': utils.tabla17[tax.group_id.code],
-                    'codigoPorcentaje': utils.tabla18[tax.percent_report],
-                    'baseImponible': '{:.2f}'.format(tax.base),
-                    'tarifa': tax.percent_report,
-                    'valor': '{:.2f}'.format(tax.amount)
+                    'codigo': utils.tabla17[code],
+                    'codigoPorcentaje': utils.tabla18[percent],
+                    'baseImponible': '{:.2f}'.format(lines.price_subtotal),
+                    'tarifa': lines.tax_ids.amount,
+                    'valor': '{:.2f}'.format(lines.price_subtotal*(lines.tax_ids.amount/100))
                 }
                 totalConImpuestos.append(totalImpuesto)
 
         infoFactura.update({'totalConImpuestos': totalConImpuestos})
 
-        compensaciones = False
-        comp = self.compute_compensaciones()
-        if comp:
-            compensaciones = True
-            infoFactura.update({
-                'compensaciones': compensaciones,
-                'comp': comp
-            })
-
         if self.type == 'out_refund':
-            inv = self.search([('number', '=', self.origin)], limit=1)
-            inv_number = '{0}-{1}-{2}'.format(inv.invoice_number[:3], inv.invoice_number[3:6],
-                                              inv.invoice_number[6:])  # noqa
+            inv = self.search([('name', '=', self.origin)], limit=1)
+            inv_number = self.name
             notacredito = {
                 'codDocModificado': inv.auth_inv_id.type_id.code,
                 'numDocModificado': inv_number,
                 'motivo': self.name,
-                'fechaEmisionDocSustento': fix_date(inv.date_invoice),
+                'fechaEmisionDocSustento': (inv.invoice_date),
                 'valorModificacion': self.amount_total
             }
             infoFactura.update(notacredito)
@@ -121,32 +108,51 @@ class Invoice(models.Model):
                 'precioTotalSinImpuesto': '%.2f' % (line.price_subtotal)
             }
             impuestos = []
-            for tax_line in line.invoice_line_tax_ids:
-                if tax_line.tax_group_id.code in ['vat', 'vat0', 'ice']:
+            for tax_line in invoice.invoice_line_ids:
+                if tax_line.tax_ids.sri_tax_type in ['vat', 'vat0', 'ice']:
+                    code = tax_line.tax_ids.sri_tax_type
+                    percent = int(tax_line.tax_ids.amount)
                     impuesto = {
-                        'codigo': utils.tabla17[tax_line.tax_group_id.code],
-                        'codigoPorcentaje': utils.tabla18[tax_line.percent_report],  # noqa
-                        'tarifa': tax_line.percent_report,
+                        'codigo': utils.tabla17[code],
+                        'codigoPorcentaje': utils.tabla18[percent],  # noqa
+                        'tarifa': percent,
                         'baseImponible': '{:.2f}'.format(line.price_subtotal),
-                        'valor': '{:.2f}'.format(line.price_subtotal *
-                                                 tax_line.amount)
+                        'valor': '{:.2f}'.format(line.price_total -
+                                                 tax_line.price_subtotal)
                     }
                     impuestos.append(impuesto)
             detalle.update({'impuestos': impuestos})
             detalles.append(detalle)
         return {'detalles': detalles}
 
+    def _info_tributaria(self, document, access_key, emission_code):
+        """
+        """
+        company = document.company_id
+        infoTributaria = {
+            'ambiente': self.env.user.company_id.env_service,
+            'tipoEmision': '01',
+            'razonSocial': company.name,
+            'nombreComercial': company.name,
+            'ruc': company.partner_id.vat,
+            'claveAcceso': access_key,
+            'codDoc': self.journal_id.sri_doctype,
+            'estab': self.name[0:3],
+            'ptoEmi': self.name[4:7],
+            'secuencial': self.name[8:17],
+            'dirMatriz': company.street
+        }
+        return infoTributaria
+
     def _compute_discount(self, detalles):
         total = sum([float(det['descuento']) for det in detalles['detalles']])
         return {'totalDescuento': total}
 
     def render_document(self, invoice, access_key, emission_code):
-        tmpl_path = os.path.join(os.path.dirname(__file__), 'templates')
-        env = Environment(loader=FileSystemLoader(tmpl_path))
-        einvoice_tmpl = env.get_template(self.TEMPLATES[self.type])
+        einvoice_tmpl = self._read_template(self.type)
         data = {}
         data.update(self._info_tributaria(invoice, access_key, emission_code))
-        data.update(self._info_factura(invoice))
+        data.update(self._info_invoice())
         detalles = self._detalles(invoice)
         data.update(detalles)
         data.update(self._compute_discount(detalles))
@@ -167,19 +173,20 @@ class Invoice(models.Model):
         auth_invoice = einvoice_tmpl.render(auth_xml)
         return auth_invoice
 
-    @api.model
     def action_generate_einvoice(self):
         """
         Metodo de generacion de factura electronica
         TODO: usar celery para enviar a cola de tareas
         la generacion de la factura y envio de email
         """
+        #invoice = self.env['account.move'].search([('id', '=', values[0])])
+
         for obj in self:
-            if obj.type not in ['out_invoice', 'out_refund']:
+            if obj.type not in ['out_invoice', 'out_refund'] and not obj.journal_id.is_electronic_document:
                 continue
-            self.check_date(obj.date_invoice)
-            self.check_before_sent()
-            access_key, emission_code = self._get_codes(name='account.invoice')
+            # invoice.check_date(obj.invoice_date) No necesario
+            # invoice.check_before_sent()
+            access_key, emission_code = self._get_codes(name='account.move')
             einvoice = self.render_document(obj, access_key, emission_code)
             inv_xml = DocumentXML(einvoice, obj.type)
             inv_xml.validate_xml()
@@ -218,12 +225,57 @@ class Invoice(models.Model):
             )
 
     @api.model
-    def invoice_print(self):
-        return self.env['report'].get_action(
-            self,
-            'l10n_ec_einvoice.report_einvoice'
+    def add_attachment(self, xml_element, auth):
+        buf = StringIO.StringIO()
+        buf.write(xml_element.encode('utf-8'))
+        document = base64.encodebytes(buf.getvalue())
+        buf.close()
+        attach = self.env['ir.attachment'].create(
+            {
+                'name': '{0}.xml'.format(self.clave_acceso),
+                'datas': document,
+                'datas_fname': '{0}.xml'.format(self.clave_acceso),
+                'res_model': self._name,
+                'res_id': self.id,
+                'type': 'binary'
+            },
         )
+        return attach
 
-    
+    @api.model
+    def send_document(self, attachments=None, tmpl=False):
+        self.ensure_one()
+        self._logger.info('Enviando documento electronico por correo')
+        tmpl = self.env.ref(tmpl)
+        tmpl.send_mail(  # noqa
+            self.id,
+            email_values={'attachment_ids': attachments}
+        )
+        self.sent = True
+        return True
 
+    @api.model
+    def _get_codes(self, name='account.move'):
+        ak_temp = self.get_access_key(name)
+        self.SriServiceObj.set_active_env(self.env.user.company_id.env_service)
+        access_key = self.SriServiceObj.create_access_key(ak_temp)
+        emission_code = self.journal_id.sequence_id.prefix[0:3]
+        return access_key, emission_code
 
+    def get_access_key(self, name):
+        date_doc = self.invoice_date.strftime("%d%m%Y")
+        auth = self.journal_id.sri_doctype
+        ruc = self.company_id.partner_id.vat
+        environment = self.company_id.env_service
+        sequence = self.name[8:17]
+        emission_type = '1'
+        access_key = (
+            [date_doc, auth, ruc,
+             sequence, environment, emission_type],
+        )
+        return access_key
+
+    @staticmethod
+    def _read_template(type):
+        with open(os.path.join(os.path.dirname(__file__), 'templates', type+".xml")) as template:
+            return template.read()

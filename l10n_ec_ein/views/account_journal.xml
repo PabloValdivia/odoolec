@@ -8,6 +8,7 @@
           <field name="arch" type="xml">
               <xpath expr="//field[@name='code']" position="after">
                   <field name="is_electronic_document"/>
+                  <field name="sri_doctype"/>
               </xpath>
           </field>
         </record>

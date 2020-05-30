@@ -10,6 +10,13 @@
                   <field name="journal_id"/>
                   <field name="sri_payment_type"/>
               </xpath>
+              <xpath expr="//button[@name='button_draft']" position="after">
+                  <button string="Process Electronic Invoice"
+                            type="object"
+                            name="action_generate_einvoice"
+                            class="oe_highlight"
+                            attrs="{'invisible': [('state', '!=', 'posted')]}"/>
+              </xpath>
           </field>
         </record>
     </data>
