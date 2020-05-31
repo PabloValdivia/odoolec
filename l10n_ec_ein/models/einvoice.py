@@ -3,7 +3,7 @@ import itertools
 import os
 from io import StringIO
 
-from jinja2 import FileSystemLoader, PackageLoader
+from jinja2 import FileSystemLoader, PackageLoader, Template
 
 from odoo import fields, models, api
 from odoo.odoo.api import Environment
@@ -278,4 +278,10 @@ class Invoice(models.Model):
     @staticmethod
     def _read_template(type):
         with open(os.path.join(os.path.dirname(__file__), 'templates', type+".xml")) as template:
-            return template.read()
+            return template
+
+    @staticmethod
+    def render(self, template_path, **kwargs):
+        return Template(
+            self._read_template(template_path)
+        ).substitute(**kwargs)
