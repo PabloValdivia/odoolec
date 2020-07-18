@@ -61,7 +61,7 @@ def validate(number):
         raise
     if number[:2] < '01' or number[:2] > '24':
         raise
-    if number[2] > '7':
+    if number[2] > '6':
         raise
     if _checksum(number) != 0:
         raise
