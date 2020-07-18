@@ -34,10 +34,9 @@
         'views/templates.xml',
         'views/company.xml',
         'views/partner.xml',
-        'data/payertype_data.xml',
-        'views/assets.xml'
+        'data/payertype_data.xml'
     ],
-    'qweb': ['static/src/xml/*.xml'],
+
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
