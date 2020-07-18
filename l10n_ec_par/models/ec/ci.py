@@ -53,7 +53,7 @@ def _checksum(number):
 
 def validate(number):
     """Check if the number provided is a valid CI number. This checks the
-    length, formatting and check digit."""
+    length, formatting and check digit.."""
     number = compact(number)
     if len(number) != 10:
         raise
