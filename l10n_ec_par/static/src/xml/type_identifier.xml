@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-extend="ClientDetailsEdit">
+        <t t-jquery=".client-details-right div:nth-child(4)" t-operation="after">
+            <div class='client-detail'>
+                <span class='label'>Tipo de Identificacion </span>
+                 <select class='detail Type Identifier' name='type_identifier'>
+                     <option value=''>None</option>
+                     <t t-foreach='widget.pos.partners' t-as='taxid_type'>
+                         <option t-att-value='lec_taxid_type' t-att-selected="partner.taxid_type ? ((lec_taxid_type === partner.taxid_type) ? true : undefined) : undefined">
+                        <t t-esc='taxid_type'/>
+                       </option>
+                     </t>
+                </select>
+            </div>
+        </t>
+    </t>
+</templates>
+
+
+
+
+
+
+
+
+

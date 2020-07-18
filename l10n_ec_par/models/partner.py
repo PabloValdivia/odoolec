@@ -21,6 +21,7 @@
 
 from odoo import api, fields, models
 from odoo.exceptions import AccessError, UserError, ValidationError
+from .utils import validator_identifier
 
 
 class Partner(models.Model):
@@ -42,4 +43,8 @@ class Partner(models.Model):
                     elif len(record.vat) > tt.max_length:
                         raise ValidationError('Tax id is major than allowed')
 
-
+    @api.constrains('vat', 'taxid_type')
+    def _check_identifier(self):
+        res = validator_identifier(self.vat, self.taxid_type)
+        if not res:
+            raise ValidationError('Error en el identificador.')
