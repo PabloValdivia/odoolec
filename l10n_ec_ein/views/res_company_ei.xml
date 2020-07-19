@@ -10,7 +10,7 @@
               <page string="Electronic Documents">
                 <groups>
                   <group>
-                    <field name="electronic_signature" widget="many2many_binary" required="1"/>
+                    <field name="electronic_signature"  widget="many2many_binary" required="1"/>
                     <field name="password_electronic_signature" password="1" required="1"/>
                     <field name="env_service"/>
                     <field name="is_force_keep_accounting"/>

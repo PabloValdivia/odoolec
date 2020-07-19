@@ -22,7 +22,8 @@
     # any module necessary for this one to work correctly
     'depends': ['base',
                 'account',
-                'l10n_ec_par'],
+                'l10n_ec_par',
+                'purchase'],
 
     # always loaded
     'data': [

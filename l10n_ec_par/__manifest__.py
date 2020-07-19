@@ -34,8 +34,9 @@
         'views/templates.xml',
         'views/company.xml',
         'views/partner.xml',
-        'data/payertype_data.xml',
+        'data/payertype_data.xml'
     ],
+
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',

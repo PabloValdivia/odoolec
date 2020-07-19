@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<guiaRemision id="comprobante" version="1.1.0">
+    <infoTributaria>
+        <ambiente>{{ ambiente }}</ambiente>
+        <tipoEmision>{{ tipoEmision }}</tipoEmision>
+        <razonSocial>{{ razonSocial }}</razonSocial>
+        <nombreComercial>{{ razonSocial }}</nombreComercial>
+        <ruc>{{ ruc }}</ruc>
+        <claveAcceso>{{ claveAcceso }}</claveAcceso>
+        <codDoc>{{ codDoc }}</codDoc>
+        <estab>{{ estab }}</estab>
+        <ptoEmi>{{ ptoEmi }}</ptoEmi>
+        <secuencial>{{ secuencial }}</secuencial>
+        <dirMatriz>{{ dirMatriz }}</dirMatriz>
+    </infoTributaria>
+    <infoGuiaRemision>
+        <dirEstablecimiento>{{ dirEstablecimiento }}</dirEstablecimiento>
+        <dirPartida>{{ dirPartida }}</dirPartida>
+        <razonSocialTransportista>{{ razonSocialTransportista }}</razonSocialTransportista>
+        <tipoIdentificacionTransportista>{{ tipoIdentificacionTransportista }}</tipoIdentificacionTransportista>
+        <rucTransportista>{{ rucTransportista }}</rucTransportista>
+        {% if rise %}
+        <rise>{{ rise }}</rise>
+        {% endif %}
+        <obligadoContabilidad>{{ obligadoContabilidad }}</obligadoContabilidad>
+        {% if contribuyenteEspecial %}
+        <contribuyenteEspecial>{{ contribuyenteEspecial }}</contribuyenteEspecial>
+        {% endif %}
+        <fechaIniTransporte>{{ fechaIniTransporte }}</fechaIniTransporte>
+        <fechaFinTransporte>{{ fechaFinTransporte }}</fechaFinTransporte>
+        <placa>{{ placa }}</placa>
+    </infoGuiaRemision>
+    <destinatarios>
+        {% for item in destinatarios %}
+        <destinatario>
+            <identificacionDestinatario>{{ item.identificacionDestinatario }}</identificacionDestinatario>
+            <razonSocialDestinatario>{{ item.razonSocialDestinatario }}</razonSocialDestinatario>
+            <dirDestinatario>{{ item.dirDestinatario }}</dirDestinatario>
+            <motivoTraslado>{{ item.motivoTraslado }}</motivoTraslado>
+            {% if docAduaneroUnico %}
+            <docAduaneroUnico>{{ item.docAduaneroUnico }}</docAduaneroUnico>
+            {% endif %}
+            {% if codEstabDestino %}
+            <codEstabDestino>{{ item.codEstabDestino }}</codEstabDestino>
+            {% endif %}
+            {% if ruta %}
+            <ruta>{{ item.ruta }}</ruta>
+            {% endif %}
+            {% if numAutDocSustento %}
+            <codDocSustento>{{ item.codDocSustento }}</codDocSustento>
+            <numDocSustento>{{ item.numDocSustento }}</numDocSustento>
+            <numAutDocSustento>{{ item.numAutDocSustento }}</numAutDocSustento>
+            <fechaEmisionDocSustento>{{ item.fechaEmisionDocSustento }}</fechaEmisionDocSustento>
+            {% endif %}
+            <detalles>
+                {% for det in item.detalles %}
+                <detalle>
+                    <codigoInterno>{{ det.codigoInterno }}</codigoInterno>
+                    <codigoAdicional>{{ det.codigoAdicional }}</codigoAdicional>
+                    <descripcion>{{ det.descripcion }}</descripcion>
+                    <cantidad>{{ det.cantidad }}</cantidad>
+                    {% if detallesAdicionales %}
+                    <detallesAdicionales>
+                        {% for itemdetalle in detallesAdicionales %}
+                        <detAdicional>
+                            <nombre>{{ nombre }}</nombre>
+                            <valor>{{ valor }}</valor>
+                        </detAdicional>
+                        {% endfor %}
+                    </detallesAdicionales>
+                    {% endif %}
+                </detalle>
+                {% endfor %}
+            </detalles>
+        </destinatario>
+        {% endfor %}
+    </destinatarios>
+</guiaRemision>

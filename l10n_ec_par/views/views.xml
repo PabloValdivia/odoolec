@@ -87,7 +87,15 @@
     </record>
 
     <!-- server action to the one above -->
-
+    <record id="odoo_lecmenu_root" model="ir.ui.menu">
+            <field name="action" eval="False"/>
+            <field name="active" eval="True"/>
+            <field name="groups_id" eval="[(6, 0, [])]"/>
+            <field name="name">Ecuador Localization</field>
+            <field name="parent_id" eval="False"/>
+            <field name="sequence">10</field>
+            <field name="web_icon">fa fa-map-marker,#FFFFFF,#34495e</field>
+    </record>
     <!-- Top menu item -->
 
     <menuitem name="Ecuador Localization" id="odoo_lecmenu_root"/>

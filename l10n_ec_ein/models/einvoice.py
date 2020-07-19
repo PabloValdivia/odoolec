@@ -1,17 +1,30 @@
 import base64
-import itertools
+import io
 import os
+import time
+import logging
+import itertools
 from io import StringIO
+from shutil import copyfile
 
-from jinja2 import FileSystemLoader, PackageLoader, Template
 
-from odoo import fields, models, api
-from odoo.odoo.api import Environment
-from odoo.odoo.exceptions import UserError
+from odoo.addons.account.models.account_payment import MAP_INVOICE_TYPE_PARTNER_TYPE
+
+import pytz
+from jinja2 import Environment, FileSystemLoader
+
+from odoo import api, models, fields
+from odoo.exceptions import Warning as UserError
+
+from odoo.odoo.addons.base.models.ir_attachment import IrAttachment
+from odoo.odoo.tools import safe_eval
 from . import utils
+
+MAP_INVOICE_TYPE_PARTNER_TYPE.update({'liq_purchase': 'supplier'})
 from ..xades.sri import DocumentXML, SriService
 from ..xades.xades import Xades
 
+sign = '/tmp/sign.p12'
 
 class Invoice(models.Model):
     _inherit = 'account.move'
@@ -32,11 +45,12 @@ class Invoice(models.Model):
         partner = self.partner_id
         infoFactura = {
             'fechaEmision': self.invoice_date.strftime("%d%m%Y"),
-            'dirEstablecimiento': company.street2,
+            'dirEstablecimiento': company.street,
             'obligadoContabilidad': company.is_force_keep_accounting,
             'tipoIdentificacionComprador': partner.taxid_type.code,  # noqa
             'razonSocialComprador': partner.name,
             'identificacionComprador': partner.vat,
+            'direccionComprador': partner.street,
             'totalSinImpuestos': '%.2f' % (self.amount_untaxed),
             'totalDescuento': '0.00',
             'propina': '0.00',
@@ -149,7 +163,9 @@ class Invoice(models.Model):
         return {'totalDescuento': total}
 
     def render_document(self, invoice, access_key, emission_code):
-        einvoice_tmpl = self._read_template(self.type)
+        tmpl_path = os.path.join(os.path.dirname(__file__), 'templates')
+        env = Environment(loader=FileSystemLoader(tmpl_path))
+        einvoice_tmpl = env.get_template(self.TEMPLATES[self.type])
         data = {}
         data.update(self._info_tributaria(invoice, access_key, emission_code))
         data.update(self._info_invoice())
@@ -192,8 +208,13 @@ class Invoice(models.Model):
             inv_xml.validate_xml()
             xades = Xades()
             file_pk12 = obj.company_id.electronic_signature
+            file = '/Users/ocurieles/Downloads/orlando_rafael_curieles_vizcaya.p12'
+            new_path = '/Users/ocurieles/signed.txt'
+            new_days = open(new_path, 'w')
             password = obj.company_id.password_electronic_signature
-            signed_document = xades.sign(einvoice, file_pk12, password)
+            signed_document = xades.sign(einvoice, file, password)
+            new_days.write(str(signed_document))
+            new_days.close()
             ok, errores = inv_xml.send_receipt(signed_document)
             if not ok:
                 raise UserError(errores)
