@@ -29,3 +29,9 @@ class AccountMove(models.Model):
     document_no = fields.Char('Numero de Documento')
     authorization_code = fields.Char('Codigo de autorizacion')
     auth_date = fields.Date('Fecha de autorizacion')
+
+    @api.onchange('authorization_code')
+    def _authorization_code(self):
+        if self.authorization_code:
+            if len(self.authorization_code) != 10 and len(self.authorization_code) != 49:
+                raise ValidationError("Error the code is not valid")
