@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_l10n_ec_purchase_l10n_ec_purchase,l10n_ec_purchase.l10n_ec_purchase,model_l10n_ec_purchase_l10n_ec_purchase,base.group_user,1,1,1,1

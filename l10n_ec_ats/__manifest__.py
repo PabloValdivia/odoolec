@@ -22,26 +22,15 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base',
-                'mail',
-                'contacts'
-                ],
+    'depends': ['base', 'account'],
 
     # always loaded
     'data': [
-        'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
-        'views/company.xml',
-        'views/partner.xml',
-        'data/payertype_data.xml'
+        # 'security/ir.model.access.csv',
+        'views/purchase.xml',
     ],
-
     # only loaded in demonstration mode
     'demo': [
-        'demo/demo.xml',
+
     ],
-    'installable': True,
-    'application': True,
-    'auto_install': False,
 }
