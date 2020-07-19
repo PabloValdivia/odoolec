@@ -67,7 +67,7 @@ class DocumentXML(object):
         self.logger.info('Enviando documento para recepcion SRI')
         buf = StringIO()
         buf.write(document)
-        buffer_xml = base64.encodestring(buf.getvalue())
+        buffer_xml = base64.encodebytes(buf.getvalue())
 
         if not utils.check_service('prueba'):
             # TODO: implementar modo offline

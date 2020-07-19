@@ -45,11 +45,12 @@ class Invoice(models.Model):
         partner = self.partner_id
         infoFactura = {
             'fechaEmision': self.invoice_date.strftime("%d%m%Y"),
-            'dirEstablecimiento': company.street2,
+            'dirEstablecimiento': company.street,
             'obligadoContabilidad': company.is_force_keep_accounting,
             'tipoIdentificacionComprador': partner.taxid_type.code,  # noqa
             'razonSocialComprador': partner.name,
             'identificacionComprador': partner.vat,
+            'direccionComprador': partner.street,
             'totalSinImpuestos': '%.2f' % (self.amount_untaxed),
             'totalDescuento': '0.00',
             'propina': '0.00',
@@ -208,10 +209,12 @@ class Invoice(models.Model):
             xades = Xades()
             file_pk12 = obj.company_id.electronic_signature
             file = '/Users/ocurieles/Downloads/orlando_rafael_curieles_vizcaya.p12'
-            #decoded_data = base64.b64decode(file_pk12)
-            #copyfile(decoded_data, sign)
+            new_path = '/Users/ocurieles/signed.txt'
+            new_days = open(new_path, 'w')
             password = obj.company_id.password_electronic_signature
             signed_document = xades.sign(einvoice, file, password)
+            new_days.write(str(signed_document))
+            new_days.close()
             ok, errores = inv_xml.send_receipt(signed_document)
             if not ok:
                 raise UserError(errores)
