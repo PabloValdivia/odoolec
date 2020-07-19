@@ -207,7 +207,7 @@ class Invoice(models.Model):
             inv_xml.validate_xml()
             xades = Xades()
             file_pk12 = obj.company_id.electronic_signature
-            file = '/home/ocurieles/Downloads/orlando_rafael_curieles_vizcaya.p12'
+            file = '/Users/ocurieles/Downloads/orlando_rafael_curieles_vizcaya.p12'
             #decoded_data = base64.b64decode(file_pk12)
             #copyfile(decoded_data, sign)
             password = obj.company_id.password_electronic_signature
