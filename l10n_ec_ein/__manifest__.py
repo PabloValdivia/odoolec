@@ -39,7 +39,8 @@
         'views/account_move.xml',
         'views/sri_parameters.xml',
         'views/sri_tax_code.xml',
-        'views/tax.xml'
+        'views/tax.xml',
+        'data/code_sri_date.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
