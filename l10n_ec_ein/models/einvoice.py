@@ -11,7 +11,7 @@ from shutil import copyfile
 from odoo.addons.account.models.account_payment import MAP_INVOICE_TYPE_PARTNER_TYPE
 
 import pytz
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Environment, FileSystemLoader, Template
 
 from odoo import api, models, fields
 from odoo.exceptions import Warning as UserError
@@ -64,17 +64,14 @@ class Invoice(models.Model):
 
         totalConImpuestos = []
         for lines in self.invoice_line_ids:
-            code = lines.tax_ids.sri_tax_type
-            percent = int(lines.tax_ids.amount)
-            if code in ['vat', 'vat0', 'ice']:
-                totalImpuesto = {
-                    'codigo': utils.tabla17[code],
-                    'codigoPorcentaje': utils.tabla18[percent],
+            totalImpuesto = {
+                    'codigo': lines.tax_ids.sri_code.code,
+                    'codigoPorcentaje': lines.tax_ids.sri_rate.code,
                     'baseImponible': '{:.2f}'.format(lines.price_subtotal),
                     'tarifa': lines.tax_ids.amount,
                     'valor': '{:.2f}'.format(lines.price_subtotal*(lines.tax_ids.amount/100))
                 }
-                totalConImpuestos.append(totalImpuesto)
+            totalConImpuestos.append(totalImpuesto)
 
         infoFactura.update({'totalConImpuestos': totalConImpuestos})
 
@@ -123,20 +120,18 @@ class Invoice(models.Model):
             }
             impuestos = []
             for tax_line in invoice.invoice_line_ids:
-                if tax_line.tax_ids.sri_tax_type in ['vat', 'vat0', 'ice']:
-                    code = tax_line.tax_ids.sri_tax_type
-                    percent = int(tax_line.tax_ids.amount)
-                    impuesto = {
-                        'codigo': utils.tabla17[code],
-                        'codigoPorcentaje': utils.tabla18[percent],  # noqa
-                        'tarifa': percent,
-                        'baseImponible': '{:.2f}'.format(line.price_subtotal),
-                        'valor': '{:.2f}'.format(line.price_total -
-                                                 tax_line.price_subtotal)
-                    }
-                    impuestos.append(impuesto)
-            detalle.update({'impuestos': impuestos})
-            detalles.append(detalle)
+                percent = int(tax_line.tax_ids.amount)
+                impuesto = {
+                    'codigo': tax_line.tax_ids.sri_code.code,
+                    'codigoPorcentaje': tax_line.tax_ids.sri_rate.code,  # noqa
+                    'tarifa': percent,
+                    'baseImponible': '{:.2f}'.format(line.price_subtotal),
+                    'valor': '{:.2f}'.format(line.price_total -
+                                             tax_line.price_subtotal)
+                }
+                impuestos.append(impuesto)
+        detalle.update({'impuestos': impuestos})
+        detalles.append(detalle)
         return {'detalles': detalles}
 
     def _info_tributaria(self, document, access_key, emission_code):
@@ -145,7 +140,7 @@ class Invoice(models.Model):
         company = document.company_id
         infoTributaria = {
             'ambiente': self.env.user.company_id.env_service,
-            'tipoEmision': '01',
+            'tipoEmision': '1',
             'razonSocial': company.name,
             'nombreComercial': company.name,
             'ruc': company.partner_id.vat,
@@ -209,11 +204,11 @@ class Invoice(models.Model):
             xades = Xades()
             file_pk12 = obj.company_id.electronic_signature
             file = '/Users/ocurieles/Downloads/orlando_rafael_curieles_vizcaya.p12'
-            new_path = '/Users/ocurieles/signed.txt'
+            new_path = '/Users/ocurieles/signed.xml'
             new_days = open(new_path, 'w')
             password = obj.company_id.password_electronic_signature
             signed_document = xades.sign(einvoice, file, password)
-            new_days.write(str(signed_document))
+            new_days.write(str(einvoice))
             new_days.close()
             ok, errores = inv_xml.send_receipt(signed_document)
             if not ok:

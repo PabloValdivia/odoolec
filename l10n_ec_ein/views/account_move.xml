@@ -8,7 +8,7 @@
           <field name="arch" type="xml">
               <xpath expr="//field[@name='journal_id']" position="replace">
                   <field name="journal_id"/>
-                  <field name="sri_payment_type"/>
+                  <field name="sri_payment_type"  attrs="{'invisible': [('type', '=', 'in_invoice')]}"/>
               </xpath>
               <xpath expr="//button[@name='button_draft']" position="after">
                   <button string="Process Electronic Invoice"
