@@ -66,18 +66,18 @@ class DocumentXML(object):
         """
         self.logger.info('Enviando documento para recepcion SRI')
         buf = StringIO()
-        buf.write(document)
-        buffer_xml = base64.encodebytes(buf.getvalue())
-
-        if not utils.check_service('prueba'):
-            # TODO: implementar modo offline
-            raise 'Error SRI'('Servicio SRI no disponible.')
+        buf.write(document.decode('utf-8'))
+        buffer_xml = base64.encodestring(buf.getvalue())
+        # if not utils.check_service('prueba'):
+        #   # TODO: implementar modo offline
+        #    raise 'Error SRI'('Servicio SRI no disponible.')
 
         client = Client(SriService.get_active_ws()[0])
         result = client.service.validarComprobante(buffer_xml)
-        self.logger.info('Estado de respuesta documento: %s' % result.estado)
+        message = result['comprobantes'][0][0]['mensajes'][0][0][1]
+        self.logger.info('Estado de respuesta documento: %s' % message)
         errores = []
-        if result.estado == 'RECIBIDA':
+        if message == 'RECIBIDA':
             return True, errores
         else:
             for comp in result.comprobantes:
@@ -109,7 +109,6 @@ class DocumentXML(object):
 
 
 class SriService(object):
-
     __AMBIENTE_PRUEBA = '1'
     __AMBIENTE_PROD = '2'
     __ACTIVE_ENV = False

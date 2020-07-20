@@ -3,3 +3,7 @@ access_sri_error_code,srierror.user,model_sri_errorcode,base.group_user,1,1,1,1
 access_sri_parameters,sri_parameters.user,model_sri_parameters,base.group_user,1,1,1,1
 access_sri_authorization,sri_authorization.user,model_sri_authorization,base.group_user,1,1,1,1
 access_sri_payment_type,sri_payment_type.user,model_sri_payment_type,base.group_user,1,1,1,1
+access_sri_tax_type,sri_payment_tax.user,model_lec_tax_code,base.group_user,1,1,1,1
+access_sri_tax_rate_type,sri_payment_tax_rate.user,model_lec_tax_rate,base.group_user,1,1,1,1
+
+

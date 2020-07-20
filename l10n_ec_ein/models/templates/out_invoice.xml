@@ -15,11 +15,13 @@
   </infoTributaria>
   <infoFactura>
     <fechaEmision>{{ fechaEmision }}</fechaEmision> {# dd/mm/aaaa #}
+    <dirEstablecimiento>{{ dirEstablecimiento }}</dirEstablecimiento>
     <contribuyenteEspecial>{{ contribuyenteEspecial }}</contribuyenteEspecial>
     <obligadoContabilidad>{{ obligadoContabilidad }}</obligadoContabilidad>
     <tipoIdentificacionComprador>{{ tipoIdentificacionComprador }}</tipoIdentificacionComprador>
     <razonSocialComprador>{{ razonSocialComprador }}</razonSocialComprador>
     <identificacionComprador>{{ identificacionComprador }}</identificacionComprador>
+    <direccionComprador>{{ direccionComprador }}</direccionComprador>
     <totalSinImpuestos>{{ totalSinImpuestos }}</totalSinImpuestos>
     <totalDescuento>{{ totalDescuento }}</totalDescuento>
     <totalConImpuestos>

@@ -8,4 +8,4 @@ from . import sri_error_code
 from . import account_journal
 from . import sri_parameters
 from . import einvoice
-from . import account_tax
+from . import sri_tax_type
