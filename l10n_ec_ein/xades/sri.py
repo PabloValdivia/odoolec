@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
-from io import StringIO
+from io import StringIO, BytesIO
 import base64
 import logging
 
@@ -65,19 +65,19 @@ class DocumentXML(object):
         Metodo que envia el XML al WS
         """
         self.logger.info('Enviando documento para recepcion SRI')
-        buf = StringIO()
-        buf.write(document.decode('utf-8'))
-        buffer_xml = base64.encodestring(buf.getvalue())
-        # if not utils.check_service('prueba'):
-        #   # TODO: implementar modo offline
+        buf = BytesIO()
+        buf.write(document)
+        buffer_xml = base64.encodestring(document)
+
+        #if not utils.check_service('prueba'):
+        #    # TODO: implementar modo offline
         #    raise 'Error SRI'('Servicio SRI no disponible.')
 
         client = Client(SriService.get_active_ws()[0])
         result = client.service.validarComprobante(buffer_xml)
-        message = result['comprobantes'][0][0]['mensajes'][0][0][1]
-        self.logger.info('Estado de respuesta documento: %s' % message)
+        self.logger.info('Estado de respuesta documento: %s' % result.estado)
         errores = []
-        if message == 'RECIBIDA':
+        if result.estado == 'RECIBIDA':
             return True, errores
         else:
             for comp in result.comprobantes:

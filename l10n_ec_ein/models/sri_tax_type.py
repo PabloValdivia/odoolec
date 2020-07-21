@@ -23,3 +23,4 @@ class Tax (models.Model):
 
     sri_code = fields.Many2one('lec.tax.code', 'code')
     sri_rate = fields.Many2one('lec.tax.rate', 'name')
+
