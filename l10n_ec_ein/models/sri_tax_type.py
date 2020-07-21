@@ -1,3 +1,5 @@
+from builtins import id
+
 from odoo import fields, models, api
 
 
@@ -7,15 +9,17 @@ class TaxSriCode (models.Model):
 
     code = fields.Char()
     name = fields.Char()
-    rate = fields.One2many('lec.tax.rate', 'code')
+    rate = fields.One2many('lec.tax.rate', 'tax_code_id')
 
 
 class TaxSriRate (models.Model):
     _name = 'lec.tax.rate'
     _description = 'Sri Tax Rate'
 
-    code = fields.Char()
-    name = fields.Char()
+    code = fields.Char('Code')
+    name = fields.Char('Name')
+    tax_code_id = fields.Many2one('lec.tax.code')
+
 
 
 class Tax (models.Model):
