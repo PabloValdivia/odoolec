@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <record id="tax_rate_form_view" model="ir.ui.view">
+            <field name="name">tax_rate.form</field>
+            <field name="model">lec.tax.rate</field>
+            <field name="arch" type="xml">
+                <form string="Tax Rate">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                                <field name="name"/>
+                             <label for="code"/>
+                                <field name="code"/>
+                               <field name="tax_code_id" invisible="1"/>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
         <record id="tax_code_form_view" model="ir.ui.view">
             <field name="name">tax_code.form</field>
@@ -17,7 +34,7 @@
                         <group>
                             <group>
                                 <field name="code"/>
-                               <field name="rate"/>
+                                <field name="rate"/>
                             </group>
                         </group>
                     </sheet>
@@ -32,7 +49,6 @@
                 <tree string="Tax Code SRI">
                     <field name="code"/>
                     <field name="name"/>
-                    <field name="rate"/>
                 </tree>
             </field>
         </record>

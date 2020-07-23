@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+    <record id="lec_tax_code_iva" model="lec.tax.code">
+        <field name="name">IVA</field>
+        <field name="code">2</field>
+        <field name="rate" eval="[(5, 0, 0),
+            (0, 0, {'code': '0', 'name': 'IVA 0%'}),
+            (0, 0, {'code': '1', 'name': '30%'}),
+            (0, 0, {'code': '2', 'name': 'IVA 12%'}),
+            (0, 0, {'code': '3', 'name': '14%'}),
+            (0, 0, {'code': '3', 'name': '100%'}),
+            (0, 0, {'code': '2', 'name': '70%'}),
+            (0, 0, {'code': '6', 'name': 'No Objeto de Impuesto'}),
+            (0, 0, {'code': '7', 'name': 'Exento de IVA'}),
+            (0, 0, {'code': '8', 'name': '0%'}),
+            (0, 0, {'code': '9', 'name': '10%'}),
+            (0, 0, {'code': '10', 'name': '20%'})]"
+        />
+    </record>
+    <record id="lec_tax_code_ice" model="lec.tax.code">
+        <field name="name">ICE</field>
+        <field name="code">3</field>
+        <field name="rate" eval="[(5, 0, 0),
+            (0, 0, {'code': '3023','name': 'Productos del tabaco y sucedáneos del tabaco'}),
+            (0, 0, {'code': '3051', 'name': 'Bebidas gaseosas'}),
+            (0, 0, {'code': '3610', 'name': 'Perfumes y aguas de tocador'}),
+            (0, 0, {'code': '3620', 'name': 'Videojuegos'}),
+            (0, 0, {'code': '3630', 'name': 'Armas de fuego, armas deportivas y municiones'}),
+            (0, 0, {'code': '3640', 'name': 'Focos incandescentes excto utilizados como insumo automotric'})]"
+        />
+    </record>
+    <record id="lec_tax_code_rebta" model="lec.tax.code">
+        <field name="name">RENTA</field>
+        <field name="code">1</field>
+        <field name="rate" eval="[(5, 0, 0),
+            (0, 0, {'code': '341', 'name': 'Otras retenciones aplicables el 2%'}),
+            (0, 0, {'code': '307', 'name': 'Servicios predomina la mano de obra'}),
+            (0, 0, {'code': '312', 'name': 'Transferencia de bienes muebles de naturaleza corporal'}),
+            (0, 0, {'code': '303', 'name': 'Honorarios profesionales y demás pagos por servicios relacio'}),
+            (0, 0, {'code': '322', 'name': 'Seguros y reaseguros (primas y cesiones)'}),
+            (0, 0, {'code': '320', 'name': 'Por arrendamiento bienes inmuebles'}),
+            (0, 0, {'code': '344', 'name': 'Otras retenciones aplicables el 2%'}),
+            (0, 0, {'code': '520', 'name': 'PAGOS AL EXTERIOR'}),
+            (0, 0, {'code': '310', 'name': '1% Renta Trans priv de pasaj o serv pub/prcar'}),
+            (0, 0, {'code': '520', 'name': '25% RETENCION OTROS INGRESOS GRAVADOS'}),
+            (0, 0, {'code': '323', 'name': 'Por rendimientos financieros (No aplica para IFIs) 2%'}),
+			(0, 0, {'code': '509', 'name': 'CANONES, DERECHOS DE AUTOR, MARCAS, PATENTES O SIMILARES'}),
+            (0, 0, {'code': '422', 'name': 'PAGOS AL EXTERIOR OTROS CONCEPTOS DE INGRESOS GRAVAD 10%'}),
+            (0, 0, {'code': '501A', 'name': 'PAGO A NO RESIDENTES SERVICIOS TECNICOS ADM, REGALIAS'}),
+            (0, 0, {'code': '309', 'name': 'Ret 1% Renta Compras (Publicidad)'}),
+            (0, 0, {'code': '3440', 'name': 'Otras retenciones aplicables el 2,75%'}),
+            (0, 0, {'code': '309', 'name': 'Ret 1,75% Renta Compras (Publicidad)'}),
+            (0, 0, {'code': '312', 'name': 'Ret 1,75% Transferencia de bienes muebles de naturaleza corp'}),
+            (0, 0, {'code': '322', 'name': '1,75 Seguros y reaseguros (primas y cesiones)'})]"
+        />
+    </record>
+
+    </data>
+</odoo>

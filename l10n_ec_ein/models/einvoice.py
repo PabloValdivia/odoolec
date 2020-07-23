@@ -1,7 +1,5 @@
 import base64
-import io
 import os
-import time
 import logging
 import itertools
 from io import StringIO
@@ -208,7 +206,7 @@ class Invoice(models.Model):
             new_days = open(new_path, 'w')
             password = obj.company_id.password_electronic_signature
             signed_document = xades.sign(einvoice, file, password)
-            new_days.write(str(einvoice))
+            new_days.write(str(signed_document))
             new_days.close()
             ok, errores = inv_xml.send_receipt(signed_document)
             if not ok:
