@@ -14,7 +14,7 @@ from jinja2 import Environment, FileSystemLoader, Template
 from odoo import api, models, fields
 from odoo.exceptions import Warning as UserError
 
-from odoo.odoo.addons.base.models.ir_attachment import IrAttachment
+from odoo.addons.base.models.ir_attachment import IrAttachment
 from odoo.odoo.tools import safe_eval
 from . import utils
 
