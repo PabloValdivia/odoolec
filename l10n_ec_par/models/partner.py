@@ -48,3 +48,26 @@ class Partner(models.Model):
         res = validator_identifier(self.vat, self.taxid_type)
         if not res:
             raise ValidationError('Error en el identificador.')
+
+    @api.depends('vat', 'name')
+    def name_get(self):
+        data = []
+        for partner in self:
+            display_val = u'{0} {1}'.format(
+                partner.vat or '*',
+                partner.name
+            )
+            data.append((partner.id, display_val))
+        return data
+
+    @api.model
+    def name_search(self, name, args=None, operator='ilike', limit=80):
+        if not args:
+            args = []
+        if name:
+            partners = self.search([('vat', operator, name)] + args, limit=limit)  # noqa
+            if not partners:
+                partners = self.search([('name', operator, name)] + args, limit=limit)  # noqa
+        else:
+            partners = self.search(args, limit=limit)
+        return partners.name_get()
