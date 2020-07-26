@@ -45,7 +45,7 @@ class Invoice(models.Model):
             'fechaEmision': self.invoice_date.strftime("%d%m%Y"),
             'dirEstablecimiento': company.street,
             'obligadoContabilidad': company.is_force_keep_accounting,
-            'tipoIdentificacionComprador': partner.taxid_type.code,  # noqa
+            'tipoIdentificacionComprador': partner.taxid_type.code,
             'razonSocialComprador': partner.name,
             'identificacionComprador': partner.vat,
             'direccionComprador': partner.street,
@@ -55,7 +55,7 @@ class Invoice(models.Model):
             'importeTotal': '{:.2f}'.format(self.amount_total),
             'moneda': 'DOLAR',
             'formaPago': self.sri_payment_type.code,
-            'valorRetIva': '0.00',  # noqa
+            'valorRetIva': '0.00',
             'valorRetRenta': '0.00',
             'contribuyenteEspecial': company.is_special_taxpayer
         }
@@ -193,8 +193,6 @@ class Invoice(models.Model):
         for obj in self:
             if obj.type not in ['out_invoice', 'out_refund'] and not obj.journal_id.is_electronic_document:
                 continue
-            # invoice.check_date(obj.invoice_date) No necesario
-            # invoice.check_before_sent()
             access_key, emission_code = self._get_codes(name='account.move')
             einvoice = self.render_document(obj, access_key, emission_code)
             inv_xml = DocumentXML(einvoice, obj.type)
@@ -268,7 +266,6 @@ class Invoice(models.Model):
         self.sent = True
         return True
 
-    @api.model
     def _get_codes(self, name='account.move'):
         ak_temp = self.get_access_key(name)
         self.SriServiceObj.set_active_env(self.env.user.company_id.env_service)
@@ -284,8 +281,8 @@ class Invoice(models.Model):
         sequence = self.name[8:17]
         emission_type = '1'
         access_key = (
-            [date_doc, auth, ruc,
-             sequence, environment, emission_type],
+            [date_doc, auth, ruc, environment,
+             sequence, emission_type],
         )
         return access_key
 
