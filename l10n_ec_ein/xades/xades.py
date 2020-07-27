@@ -54,7 +54,7 @@ class Xades(object):
         Metodo que aplica la firma digital al XML
         TODO: Revisar return
         """
-        xml_str = xml_document.encode(encoding='UTF-8', errors='strict')
+        xml_str = xml_document
         JAR_PATH = 'firma/firmaXadesBes.jar'
         JAVA_CMD = 'java'
         firma_path = os.path.join(os.path.dirname(__file__), JAR_PATH)

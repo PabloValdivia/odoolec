@@ -5,7 +5,6 @@ import itertools
 from io import StringIO
 from shutil import copyfile
 
-
 from odoo.addons.account.models.account_payment import MAP_INVOICE_TYPE_PARTNER_TYPE
 
 import pytz
@@ -17,6 +16,7 @@ from odoo.exceptions import Warning as UserError
 from odoo.addons.base.models.ir_attachment import IrAttachment
 from odoo.tools import safe_eval
 from . import utils
+from . import edocument
 
 MAP_INVOICE_TYPE_PARTNER_TYPE.update({'liq_purchase': 'supplier'})
 from ..xades.sri import DocumentXML, SriService
@@ -24,8 +24,11 @@ from ..xades.xades import Xades
 
 sign = '/tmp/sign.p12'
 
+
 class Invoice(models.Model):
-    _inherit = 'account.move'
+    _name = 'account.move'
+    _inherit = ['account.move', 'account.edocument']
+    _logger = logging.getLogger('account.edocument')
     TEMPLATES = {
         'out_invoice': 'out_invoice.xml',
         'out_refund': 'out_refund.xml'
@@ -42,7 +45,7 @@ class Invoice(models.Model):
         company = self.company_id
         partner = self.partner_id
         infoFactura = {
-            'fechaEmision': self.invoice_date.strftime("%d%m%Y"),
+            'fechaEmision': self.invoice_date.strftime("%d/%m/%Y"),
             'dirEstablecimiento': company.street,
             'obligadoContabilidad': company.is_force_keep_accounting,
             'tipoIdentificacionComprador': partner.taxid_type.code,
@@ -53,7 +56,7 @@ class Invoice(models.Model):
             'totalDescuento': '0.00',
             'propina': '0.00',
             'importeTotal': '{:.2f}'.format(self.amount_total),
-            'moneda': 'DOLAR',
+            'moneda': 'USD',
             'formaPago': self.sri_payment_type.code,
             'valorRetIva': '0.00',
             'valorRetRenta': '0.00',
@@ -63,12 +66,12 @@ class Invoice(models.Model):
         totalConImpuestos = []
         for lines in self.invoice_line_ids:
             totalImpuesto = {
-                    'codigo': lines.tax_ids.sri_code.code,
-                    'codigoPorcentaje': lines.tax_ids.sri_rate.code,
-                    'baseImponible': '{:.2f}'.format(lines.price_subtotal),
-                    'tarifa': lines.tax_ids.amount,
-                    'valor': '{:.2f}'.format(lines.price_subtotal*(lines.tax_ids.amount/100))
-                }
+                'codigo': lines.tax_ids.sri_code.code,
+                'codigoPorcentaje': lines.tax_ids.sri_rate.code,
+                'baseImponible': '{:.2f}'.format(lines.price_subtotal),
+                'tarifa': lines.tax_ids.amount,
+                'valor': '{:.2f}'.format(lines.price_subtotal * (lines.tax_ids.amount / 100))
+            }
             totalConImpuestos.append(totalImpuesto)
 
         infoFactura.update({'totalConImpuestos': totalConImpuestos})
@@ -89,7 +92,6 @@ class Invoice(models.Model):
     def _detalles(self, invoice):
         """
         """
-
         def fix_chars(code):
             special = [
                 [u'%', ' '],
@@ -100,6 +102,11 @@ class Invoice(models.Model):
             for f, r in special:
                 code = code.replace(f, r)
             return code
+
+        detalle_adicional = {
+            'nombre': 'Unidad',
+            'valor': 1
+        }
 
         detalles = []
         for line in invoice.invoice_line_ids:
@@ -114,14 +121,15 @@ class Invoice(models.Model):
                 'cantidad': '%.6f' % (line.quantity),
                 'precioUnitario': '%.6f' % (line.price_unit),
                 'descuento': '%.2f' % discount,
-                'precioTotalSinImpuesto': '%.2f' % (line.price_subtotal)
+                'precioTotalSinImpuesto': '%.2f' % (line.price_subtotal),
+                'detalle_adicional': detalle_adicional
             }
             impuestos = []
             for tax_line in invoice.invoice_line_ids:
                 percent = int(tax_line.tax_ids.amount)
                 impuesto = {
                     'codigo': tax_line.tax_ids.sri_code.code,
-                    'codigoPorcentaje': tax_line.tax_ids.sri_rate.code,  # noqa
+                    'codigoPorcentaje': tax_line.tax_ids.sri_rate.code,
                     'tarifa': percent,
                     'baseImponible': '{:.2f}'.format(line.price_subtotal),
                     'valor': '{:.2f}'.format(line.price_total -
@@ -132,42 +140,6 @@ class Invoice(models.Model):
         detalles.append(detalle)
         return {'detalles': detalles}
 
-    def _info_tributaria(self, document, access_key, emission_code):
-        """
-        """
-        company = document.company_id
-        infoTributaria = {
-            'ambiente': self.env.user.company_id.env_service,
-            'tipoEmision': '1',
-            'razonSocial': company.name,
-            'nombreComercial': company.name,
-            'ruc': company.partner_id.vat,
-            'claveAcceso': access_key,
-            'codDoc': self.journal_id.sri_doctype,
-            'estab': self.name[0:3],
-            'ptoEmi': self.name[4:7],
-            'secuencial': self.name[8:17],
-            'dirMatriz': company.street
-        }
-        return infoTributaria
-
-    def _compute_discount(self, detalles):
-        total = sum([float(det['descuento']) for det in detalles['detalles']])
-        return {'totalDescuento': total}
-
-    def render_document(self, invoice, access_key, emission_code):
-        tmpl_path = os.path.join(os.path.dirname(__file__), 'templates')
-        env = Environment(loader=FileSystemLoader(tmpl_path))
-        einvoice_tmpl = env.get_template(self.TEMPLATES[self.type])
-        data = {}
-        data.update(self._info_tributaria(invoice, access_key, emission_code))
-        data.update(self._info_invoice())
-        detalles = self._detalles(invoice)
-        data.update(detalles)
-        data.update(self._compute_discount(detalles))
-        einvoice = einvoice_tmpl.render(data)
-        return einvoice
-
     def render_authorized_einvoice(self, autorizacion):
         tmpl_path = os.path.join(os.path.dirname(__file__), 'templates')
         env = Environment(loader=FileSystemLoader(tmpl_path))
@@ -176,19 +148,13 @@ class Invoice(models.Model):
             'estado': autorizacion.estado,
             'numeroAutorizacion': autorizacion.numeroAutorizacion,
             'ambiente': autorizacion.ambiente,
-            'fechaAutorizacion': str(autorizacion.fechaAutorizacion.strftime("%d/%m/%Y %H:%M:%S")),  # noqa
+            'fechaAutorizacion': str(autorizacion.fechaAutorizacion.strftime("%d/%m/%Y %H:%M:%S")),
             'comprobante': autorizacion.comprobante
         }
         auth_invoice = einvoice_tmpl.render(auth_xml)
         return auth_invoice
 
     def action_generate_einvoice(self):
-        """
-        Metodo de generacion de factura electronica
-        TODO: usar celery para enviar a cola de tareas
-        la generacion de la factura y envio de email
-        """
-        #invoice = self.env['account.move'].search([('id', '=', values[0])])
 
         for obj in self:
             if obj.type not in ['out_invoice', 'out_refund'] and not obj.journal_id.is_electronic_document:
@@ -196,16 +162,21 @@ class Invoice(models.Model):
             access_key, emission_code = self._get_codes(name='account.move')
             einvoice = self.render_document(obj, access_key, emission_code)
             inv_xml = DocumentXML(einvoice, obj.type)
-            inv_xml.validate_xml()
+            if not inv_xml.validate_xml():
+                raise UserError("Not Valid Schema")
             xades = Xades()
             file_pk12 = obj.company_id.electronic_signature
             file = '/Users/ocurieles/Downloads/orlando_rafael_curieles_vizcaya.p12'
-            new_path = '/Users/ocurieles/signed.xml'
-            new_days = open(new_path, 'w')
+            signed_path = '/Users/ocurieles/signed.xml'
+            xml_path = '/Users/ocurieles/xml_file.xml'
+            xml_file = open(xml_path, 'w')
+            signed = open(signed_path, 'w')
             password = obj.company_id.password_electronic_signature
             signed_document = xades.sign(einvoice, file, password)
-            new_days.write(str(signed_document))
-            new_days.close()
+            signed.write(str(signed_document))
+            signed.close()
+            xml_file.write(str(einvoice))
+            xml_file.close()
             ok, errores = inv_xml.send_receipt(signed_document)
             if not ok:
                 raise UserError(errores)
@@ -266,29 +237,27 @@ class Invoice(models.Model):
         self.sent = True
         return True
 
-    def _get_codes(self, name='account.move'):
-        ak_temp = self.get_access_key(name)
-        self.SriServiceObj.set_active_env(self.env.user.company_id.env_service)
-        access_key = self.SriServiceObj.create_access_key(ak_temp)
-        emission_code = self.journal_id.sequence_id.prefix[0:3]
-        return access_key, emission_code
+    def _compute_discount(self, detalles):
+        total = sum([float(det['descuento']) for det in detalles['detalles']])
+        return {'totalDescuento': total}
 
-    def get_access_key(self, name):
-        date_doc = self.invoice_date.strftime("%d%m%Y")
-        auth = self.journal_id.sri_doctype
-        ruc = self.company_id.partner_id.vat
-        environment = self.company_id.env_service
-        sequence = self.name[8:17]
-        emission_type = '1'
-        access_key = (
-            [date_doc, auth, ruc, environment,
-             sequence, emission_type],
-        )
-        return access_key
+    def render_document(self, invoice, access_key, emission_code):
+        tmpl_path = os.path.join(os.path.dirname(__file__), 'templates')
+        env = Environment(loader=FileSystemLoader(tmpl_path))
+        einvoice_tmpl = env.get_template(self.TEMPLATES[self.type])
+        data = {}
+        data.update(self._info_tributaria(invoice, access_key, emission_code))
+        data.update(self._info_invoice())
+        detalles = self._detalles(invoice)
+
+        data.update(detalles)
+        data.update(self._compute_discount(detalles))
+        einvoice = einvoice_tmpl.render(data)
+        return einvoice
 
     @staticmethod
     def _read_template(type):
-        with open(os.path.join(os.path.dirname(__file__), 'templates', type+".xml")) as template:
+        with open(os.path.join(os.path.dirname(__file__), 'templates', type + ".xml")) as template:
             return template
 
     @staticmethod

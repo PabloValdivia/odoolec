@@ -9,3 +9,4 @@ from . import account_journal
 from . import sri_parameters
 from . import einvoice
 from . import sri_tax_type
+from . import edocument

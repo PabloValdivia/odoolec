@@ -48,7 +48,7 @@
     {% endif %}
     <propina>0.00</propina>
     <importeTotal>{{ importeTotal }}</importeTotal>
-    <moneda>DOLAR</moneda>
+    <moneda>USD</moneda>
     <pagos>
         <pago>
             <formaPago>{{ formaPago }}</formaPago>
@@ -68,9 +68,7 @@
       <descuento>{{ item['descuento'] }}</descuento>
       <precioTotalSinImpuesto>{{ item['precioTotalSinImpuesto'] }}</precioTotalSinImpuesto>
       <detallesAdicionales>
-        {% for det in item['detalle_adicional'] %}
-        <detAdicional nombre="{{ det['nombre'] }}" valor="{{ det['valor'] }}" />
-        {% endfor %}
+        <detAdicional nombre="{{ 'UMedida' }}" valor="{{'Unidad'}}"/>
       </detallesAdicionales>
       <impuestos>
         {% for tax in item['impuestos'] %}
