@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-
-try:
-    from stdnum import ec
-except ImportError:
-    from . import ec
+from . import ec
 
 
 def validator_identifier(vat, taxid_type):
