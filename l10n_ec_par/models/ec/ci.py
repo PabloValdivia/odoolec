@@ -59,7 +59,7 @@ def validate(number):
         raise
     if not number.isdigit():
         raise
-    if number[:2] < '01' or number[:2] > '24':
+    if number[:2] < '01' or number[:2] > '24' and (number[:2] not in ('30', '50')):
         raise
     if number[2] > '6':
         raise
