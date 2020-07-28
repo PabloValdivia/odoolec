@@ -166,7 +166,6 @@ class Invoice(models.Model):
             if not inv_xml.validate_xml():
                 raise UserError("Not Valid Schema")
             xades = Xades()
-
             file_binary = obj.company_id.electronic_signature[0].datas
             pk12_path = '/tmp/sign.p12'
             pk12_file = open(pk12_path, 'wb')

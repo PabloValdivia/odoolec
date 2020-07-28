@@ -55,16 +55,19 @@ class Xades(object):
         TODO: Revisar return
         """
         xml_str = xml_document
-        JAR_PATH = 'firma/firmaXadesBes.jar'
+        JAR_PATH = 'firma/IngeintXades.jar'
         JAVA_CMD = 'java'
-        firma_path = os.path.join(os.path.dirname(__file__), JAR_PATH)
+        sign_path = '/tmp/sign.p12'
+        jar_path = os.path.join(os.path.dirname(__file__), JAR_PATH)
+        sign = os.path.join(os.path.dirname(__file__), sign_path)
+
         command = [
             JAVA_CMD,
             '-jar',
-            firma_path,
+            jar_path,
             xml_str,
-            base64.b64encode(bytes(file_pk12, 'utf-8')).decode('ascii'),
-            base64.b64encode(bytes(password, 'utf-8')).decode('ascii')
+            sign,
+            password
         ]
         try:
             logging.info('Probando comando de firma digital')
