@@ -22,3 +22,4 @@
 
 # provide vat as an alias
 from . import ci, ruc
+from stdnum.ec import ruc as vat  # noqa: F401

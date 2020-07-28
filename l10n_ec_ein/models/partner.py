@@ -1,4 +1,5 @@
 from odoo import fields, models, api
+from odoo.exceptions import AccessError, ValidationError
 
 
 class Partner(models.Model):
@@ -16,5 +17,5 @@ class Partner(models.Model):
                     [('vat', '=', row.vat)])]
                 vat_bp.remove(row.id)
                 if len(vat_bp) >= 1:
-                    raise UserError('You are doubling the identification number')
+                    raise ValidationError('You are doubling the identification number')
 

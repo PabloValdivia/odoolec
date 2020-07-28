@@ -38,6 +38,7 @@ InvalidLength: ...
 from .util import clean
 
 
+
 def compact(number):
     """Convert the number to the minimal representation. This strips the
     number of any valid separators and removes surrounding whitespace."""
@@ -56,15 +57,15 @@ def validate(number):
     length, formatting and check digit.."""
     number = compact(number)
     if len(number) != 10:
-        raise
+        raise ValueError
     if not number.isdigit():
-        raise
-    if number[:2] < '01' or number[:2] > '24':
-        raise
+        raise ValueError
+    if number[:2] < '01' or number[:2] > '24' and (number[:2] not in ('30', '50')):
+        raise ValueError
     if number[2] > '6':
-        raise
+        raise ValueError
     if _checksum(number) != 0:
-        raise
+        raise ValueError
     return number
 
 

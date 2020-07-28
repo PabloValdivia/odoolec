@@ -10,12 +10,12 @@
                   <field name="auth_date" required="1"  attrs="{'invisible': ['|', '|', ('state','not in',['draft']), ('type', '=', 'purchase'), ('type', '!=', 'in_invoice')]}"/>
               </xpath>
               <xpath expr="//field[@name='purchase_vendor_bill_id']" position="after">
-                   <field name="document_no" placeholder="N° de Documento" required="1"
-                    attrs="{'invisible': ['|', '|', ('state','not in',['draft']), ('type', '=', 'purchase'), ('type', '!=', 'in_invoice')]}"/>
-                  <field name="authorization_code" required="1"
-                   attrs="{'invisible': ['|', '|', ('state','not in',['draft']), ('type', '=', 'purchase'), ('type', '!=', 'in_invoice')]}"/>
+                  <field name="document_no" placeholder="N° de Documento" attrs="{'required': [('type', '=', 'in_invoice')], 'invisible': ['|', '|', ('state','not in',['draft']), ('state', '=', 'purchase'), ('type', '!=', 'in_invoice')]}"/>
+                  <field name="authorization_code" attrs="{'required': [('type', '=', 'in_invoice')], 'invisible': ['|', '|', ('state','not in',['draft']), ('state', '=', 'purchase'), ('type', '!=', 'in_invoice')]}"/>
               </xpath>
           </field>
         </record>
     </data>
 </odoo>
+
+
