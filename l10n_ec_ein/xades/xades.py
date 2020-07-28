@@ -81,4 +81,5 @@ class Xades(object):
             stderr=subprocess.STDOUT
         )
         res = p.communicate()
-        return res[0]
+        res = res[0].decode('utf-8')
+        return res

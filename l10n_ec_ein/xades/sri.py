@@ -65,9 +65,13 @@ class DocumentXML(object):
         Metodo que envia el XML al WS
         """
         self.logger.info('Enviando documento para recepcion SRI')
-        buf = BytesIO()
-        buf.write(document)
-        buffer_xml = base64.encodestring(document)
+        #buf = BytesIO()
+        #buf.write(document)
+        #buffer_xml = base64.b64encode(bytes(document, "utf-8"))
+        buffer_xml = base64.b64encode(bytes(document, 'utf-8')).decode('ascii')
+        buffer_xml = buffer_xml.replace('\n','')
+        #buffer_xml = base64.b64encode(buf.getvalue())
+
 
         #if not utils.check_service('prueba'):
         #    # TODO: implementar modo offline

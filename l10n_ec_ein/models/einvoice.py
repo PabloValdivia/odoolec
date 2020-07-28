@@ -4,6 +4,7 @@ import logging
 import itertools
 from io import StringIO
 from shutil import copyfile
+from xml.dom import minidom
 
 from odoo.addons.account.models.account_payment import MAP_INVOICE_TYPE_PARTNER_TYPE
 
@@ -165,18 +166,14 @@ class Invoice(models.Model):
             if not inv_xml.validate_xml():
                 raise UserError("Not Valid Schema")
             xades = Xades()
-            file_pk12 = obj.company_id.electronic_signature
-            file = '/Users/ocurieles/Downloads/orlando_rafael_curieles_vizcaya.p12'
-            signed_path = '/Users/ocurieles/signed.xml'
-            xml_path = '/Users/ocurieles/xml_file.xml'
-            xml_file = open(xml_path, 'w')
-            signed = open(signed_path, 'w')
+
+            file_binary = obj.company_id.electronic_signature[0].datas
+            pk12_path = '/tmp/sign.p12'
+            pk12_file = open(pk12_path, 'wb')
+            pk12_file.write(base64.b64decode(file_binary))
             password = obj.company_id.password_electronic_signature
-            signed_document = xades.sign(einvoice, file, password)
-            signed.write(str(signed_document))
-            signed.close()
-            xml_file.write(str(einvoice))
-            xml_file.close()
+            signed_document = xades.sign(einvoice, pk12_file, password)
+            pk12_file.close()
             ok, errores = inv_xml.send_receipt(signed_document)
             if not ok:
                 raise UserError(errores)
