@@ -49,24 +49,18 @@ class CheckDigit(object):
 
 class Xades(object):
 
-    def sign(self, xml_document, file_pk12, password):
-        """
-        Metodo que aplica la firma digital al XML
-        TODO: Revisar return
-        """
-        xml_str = xml_document
+    def sign(self, to_sign_file, password):
         JAR_PATH = 'firma/IngeintXades.jar'
         JAVA_CMD = 'java'
-        sign_path = '/tmp/sign.p12'
+        pk_12_file = 'sign.p12'
         jar_path = os.path.join(os.path.dirname(__file__), JAR_PATH)
-        sign = os.path.join(os.path.dirname(__file__), sign_path)
 
         command = [
             JAVA_CMD,
             '-jar',
             jar_path,
-            xml_str,
-            sign,
+            to_sign_file.name,
+            pk_12_file,
             password
         ]
         try:
@@ -84,5 +78,4 @@ class Xades(object):
             stderr=subprocess.STDOUT
         )
         res = p.communicate()
-        res = res[0].decode('utf-8')
-        return res
+        return res[0]

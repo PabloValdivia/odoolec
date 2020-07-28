@@ -22,6 +22,8 @@ from . import edocument
 MAP_INVOICE_TYPE_PARTNER_TYPE.update({'liq_purchase': 'supplier'})
 from ..xades.sri import DocumentXML, SriService
 from ..xades.xades import Xades
+import os.path
+from os import path
 
 sign = '/tmp/sign.p12'
 
@@ -170,9 +172,15 @@ class Invoice(models.Model):
             pk12_path = '/tmp/sign.p12'
             pk12_file = open(pk12_path, 'wb')
             pk12_file.write(base64.b64decode(file_binary))
-            password = obj.company_id.password_electronic_signature
-            signed_document = xades.sign(einvoice, pk12_file, password)
+            x_path = "/tmp/ComprobantesGenerados/"
+            if not path.exists(x_path):
+                os.mkdir(x_path)
+            to_sign_file = open(x_path+'FACTURA_SRI_'+self.name+".xml", 'w')
+            to_sign_file.write(einvoice)
+            to_sign_file.close()
             pk12_file.close()
+            password = obj.company_id.password_electronic_signature
+            signed_document = xades.sign(to_sign_file, password)
             ok, errores = inv_xml.send_receipt(signed_document)
             if not ok:
                 raise UserError(errores)
