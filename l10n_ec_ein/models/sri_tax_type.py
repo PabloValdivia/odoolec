@@ -9,7 +9,7 @@ class TaxSriCode (models.Model):
 
     code = fields.Char()
     name = fields.Char()
-    rate = fields.One2many('lec.tax.rate', 'tax_code_id')
+    rate_ids = fields.One2many('lec.tax.rate', 'tax_code_id')
 
 
 class TaxSriRate (models.Model):
@@ -19,7 +19,6 @@ class TaxSriRate (models.Model):
     code = fields.Char('Code')
     name = fields.Char('Name')
     tax_code_id = fields.Many2one('lec.tax.code')
-
 
 
 class Tax (models.Model):

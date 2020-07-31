@@ -36,10 +36,10 @@
                         </group>
                         <notebook>
                           <page string="SRI Rate" name="Rate">
-                              <field name="rate">
+                              <field name="rate_ids">
                                   <tree>
-                                      <fiel name="code"/>
-                                      <fiel name="name"/>
+                                      <field name="code"/>
+                                      <field name="name"/>
                                   </tree>
                               </field>
                           </page>
