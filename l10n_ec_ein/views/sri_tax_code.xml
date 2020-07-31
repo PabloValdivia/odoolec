@@ -32,11 +32,18 @@
                             </h1>
                         </div>
                         <group>
-                            <group>
-                                <field name="code"/>
-                                <field name="rate"/>
-                            </group>
+                           <field name="code"/>
                         </group>
+                        <notebook>
+                          <page string="SRI Rate" name="Rate">
+                              <field name="rate">
+                                  <tree>
+                                      <fiel name="code"/>
+                                      <fiel name="name"/>
+                                  </tree>
+                              </field>
+                          </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>

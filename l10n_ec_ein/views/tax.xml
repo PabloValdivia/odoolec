@@ -8,8 +8,7 @@
             <field name="inherit_id" ref="account.view_tax_form"/>
             <field name="priority" eval="8"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='amount']" position="after">
-                    <label for="sri_code"/>
+                <xpath expr="//field[@name='active']" position="before">
                     <field name="sri_code"/>
                     <field name="sri_rate"/>
                 </xpath>
