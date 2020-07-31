@@ -4,7 +4,7 @@
     <record id="lec_tax_code_iva" model="lec.tax.code">
         <field name="name">IVA</field>
         <field name="code">2</field>
-        <field name="rate" eval="[(5, 0, 0),
+        <field name="rate_ids" eval="[(5, 0, 0),
             (0, 0, {'code': '0', 'name': 'IVA 0%'}),
             (0, 0, {'code': '1', 'name': '30%'}),
             (0, 0, {'code': '2', 'name': 'IVA 12%'}),
@@ -21,7 +21,7 @@
     <record id="lec_tax_code_ice" model="lec.tax.code">
         <field name="name">ICE</field>
         <field name="code">3</field>
-        <field name="rate" eval="[(5, 0, 0),
+        <field name="rate_ids" eval="[(5, 0, 0),
             (0, 0, {'code': '3023','name': 'Productos del tabaco y sucedáneos del tabaco'}),
             (0, 0, {'code': '3051', 'name': 'Bebidas gaseosas'}),
             (0, 0, {'code': '3610', 'name': 'Perfumes y aguas de tocador'}),
@@ -33,7 +33,7 @@
     <record id="lec_tax_code_rebta" model="lec.tax.code">
         <field name="name">RENTA</field>
         <field name="code">1</field>
-        <field name="rate" eval="[(5, 0, 0),
+        <field name="rate_ids" eval="[(5, 0, 0),
             (0, 0, {'code': '341', 'name': 'Otras retenciones aplicables el 2%'}),
             (0, 0, {'code': '307', 'name': 'Servicios predomina la mano de obra'}),
             (0, 0, {'code': '312', 'name': 'Transferencia de bienes muebles de naturaleza corporal'}),
