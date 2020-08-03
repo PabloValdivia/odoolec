@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="sustents_tax_1" model="sustents.tax">
+            <field name="name">Crédito Tributario para declaración de IVA</field>
+            <field name="code">01</field>
+            <field name="description">Servicios y Bienes distintos de Inventarios y Activos fijos</field>
+        </record>
+        <record id="sustents_tax_2" model="sustents.tax">
+            <field name="name">Costo o Gasto para declaración de Imp. a la Renta</field>
+            <field name="code">02</field>
+            <field name="description">Servicios y bienes distintos de inventarios y activos fijos</field>
+        </record>
+        <record id="sustents_tax_3" model="sustents.tax">
+            <field name="name">Activo Fijo</field>
+            <field name="code">03</field>
+            <field name="description">Crédito Tributario para declaración de IVA</field>
+        </record>
+        <record id="sustents_tax_4" model="sustents.tax">
+            <field name="name">Activo Fijo - Costo o Gasto</field>
+            <field name="code">04</field>
+            <field name="description"></field>
+        </record>
+        <record id="sustents_tax_5" model="sustents.tax">
+            <field name="name">Liquidación de Gastos de Viaje, hospedaje y Alimentación</field>
+            <field name="code">05</field>
+            <field name="description">A nombre de empleados y no de la empresa</field>
+        </record>
+        <record id="sustents_tax_6" model="sustents.tax">
+            <field name="name">Inventario - Crédito Tributario para la declaración de IVA</field>
+            <field name="code">06</field>
+            <field name="description"></field>
+        </record>
+        <record id="sustents_tax_7" model="sustents.tax">
+            <field name="name">Inventario - Costo o Gasto para declaración de Imp. </field>
+            <field name="code">07</field>
+            <field name="description">a la Renta</field>
+        </record>
+        <record id="sustents_tax_8" model="sustents.tax">
+            <field name="name">Valor pagado para solicitar Reembolso de Gastos</field>
+            <field name="code">08</field>
+            <field name="description">Intermediario</field>
+        </record>
+        <record id="sustents_tax_9" model="sustents.tax">
+            <field name="name">Reembolso por Siniestros</field>
+            <field name="code">09</field>
+            <field name="description"></field>
+        </record>
+        <record id="sustents_tax_10" model="sustents.tax">
+            <field name="name">Distribución de Dividendos, Beneficios o Utilidades</field>
+            <field name="code">10</field>
+            <field name="description"></field>
+        </record>
+        <record id="sustents_tax_11" model="sustents.tax">
+            <field name="name">Impuestos y retenciones presuntivos</field>
+            <field name="code">11</field>
+            <field name="description"></field>
+        </record>
+        <record id="sustents_tax_12" model="sustents.tax">
+            <field name="name">Valores reconocidos por entidades del sector público</field>
+            <field name="code">12</field>
+            <field name="description">a favo rde sujetos pasivos</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_sustents_tax_form">
+           <field name="name">sustento.sri.form</field>
+           <field name="model">sustents.tax</field>
+           <field name="arch" type="xml">
+                <form string="Sustento">
+                   <group colspan="4" col="2">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="Title"/>
+                            </h1>
+                        <field name="code"/>
+                       <field name="description"/>
+                    </group>
+                 </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_sustents_tax_tree">
+          <field name="name">sustento.sri.tree</field>
+          <field name="model">sustents.tax</field>
+          <field name="arch" type="xml">
+            <tree string="Sustento">
+              <field name="name"/>
+              <field name="code"/>
+            </tree>
+          </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_sustents_tax">
+          <field name="name">Sustento</field>
+          <field name="res_model">sustents.tax</field>
+          <field name="view_mode">form</field>
+          <field name="view_mode">tree,form</field>
+          <field name="view_id" ref="view_sustents_tax_tree"/>
+        </record>
+        <menuitem name="Sustentos Tributarios" id="menu_action_sustents_tax"
+                      parent="account.account_invoicing_menu" action="action_sustents_tax"
+                      sequence="6"/>
+    </data>
+</odoo>
