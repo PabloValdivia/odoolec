@@ -31,9 +31,9 @@
                <field name="model">account.move</field>
                <field name="inherit_id" ref="account.view_account_invoice_filter"/>
                <field name="arch" type="xml">
-                    <search>
-                        <field name="document_no"/>
-                    </search>
+                   <search>
+                    <field name="document_no"  string="N° Document"  context="{'default_document_id':'view_extension_account_move_search_tree_inherit'}"/>
+                   </search>
                </field>
         </record>
     </data>

@@ -26,7 +26,7 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'views/purchase.xml',
         'views/sustento_sri.xml',
         'data/data_sutents_tax.xml'
