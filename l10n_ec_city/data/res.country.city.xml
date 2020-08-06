@@ -1,0 +1,1361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="Ecuador_city_1" model="res.country.city">
+            <field name="state_id" ref="base_ec_01" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">101</field>
+            <field name="name">CUENCA</field>
+        </record>
+        <record id="Ecuador_city_2" model="res.country.city">
+            <field name="state_id" ref="base_ec_01" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">102</field>
+            <field name="name">GIRON</field>
+        </record>
+        <record id="Ecuador_city_3" model="res.country.city">
+            <field name="state_id" ref="base_ec_01" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">103</field>
+            <field name="name">GUALACEO</field>
+        </record>
+        <record id="Ecuador_city_4" model="res.country.city">
+            <field name="state_id" ref="base_ec_01" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">104</field>
+            <field name="name">NABON</field>
+        </record>
+        <record id="Ecuador_city_5" model="res.country.city">
+            <field name="state_id" ref="base_ec_01" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">105</field>
+            <field name="name">PAUTE</field>
+        </record>
+        <record id="Ecuador_city_6" model="res.country.city">
+            <field name="state_id" ref="base_ec_01" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">106</field>
+            <field name="name">PUCARA</field>
+        </record>
+        <record id="Ecuador_city_7" model="res.country.city">
+            <field name="state_id" ref="base_ec_01" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">107</field>
+            <field name="name">SAN FERNANDO</field>
+        </record>
+        <record id="Ecuador_city_8" model="res.country.city">
+            <field name="state_id" ref="base_ec_01" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">108</field>
+            <field name="name">SANTA ISABEL</field>
+        </record>
+        <record id="Ecuador_city_9" model="res.country.city">
+            <field name="state_id" ref="base_ec_01" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">109</field>
+            <field name="name">SIGSIG</field>
+        </record>
+        <record id="Ecuador_city_10" model="res.country.city">
+            <field name="state_id" ref="base_ec_01" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">110</field>
+            <field name="name">OÑA</field>
+        </record>
+        <record id="Ecuador_city_11" model="res.country.city">
+            <field name="state_id" ref="base_ec_01" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">111</field>
+            <field name="name">CHORDELEG</field>
+        </record>
+        <record id="Ecuador_city_12" model="res.country.city">
+            <field name="state_id" ref="base_ec_01" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">112</field>
+            <field name="name">EL PAN</field>
+        </record>
+        <record id="Ecuador_city_13" model="res.country.city">
+            <field name="state_id" ref="base_ec_01" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">113</field>
+            <field name="name">SEVILLA DE ORO</field>
+        </record>
+        <record id="Ecuador_city_14" model="res.country.city">
+            <field name="state_id" ref="base_ec_01" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">114</field>
+            <field name="name">GUACHAPALA</field>
+        </record>
+        <record id="Ecuador_city_15" model="res.country.city">
+            <field name="state_id" ref="base_ec_01" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">115</field>
+            <field name="name">CAMILO PONCE ENRIQUEZ</field>
+        </record>
+        <record id="Ecuador_city_16" model="res.country.city">
+            <field name="state_id" ref="base_ec_02" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">201</field>
+            <field name="name">GUARANDA</field>
+        </record>
+        <record id="Ecuador_city_17" model="res.country.city">
+            <field name="state_id" ref="base_ec_02" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">202</field>
+            <field name="name">CHILLANES</field>
+        </record>
+        <record id="Ecuador_city_18" model="res.country.city">
+            <field name="state_id" ref="base_ec_02" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">203</field>
+            <field name="name">CHIMBO</field>
+        </record>
+        <record id="Ecuador_city_19" model="res.country.city">
+            <field name="state_id" ref="base_ec_02" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">204</field>
+            <field name="name">ECHEANDIA</field>
+        </record>
+        <record id="Ecuador_city_20" model="res.country.city">
+            <field name="state_id" ref="base_ec_02" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">205</field>
+            <field name="name">SAN MIGUEL</field>
+        </record>
+        <record id="Ecuador_city_21" model="res.country.city">
+            <field name="state_id" ref="base_ec_02" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">206</field>
+            <field name="name">CALUMA</field>
+        </record>
+        <record id="Ecuador_city_22" model="res.country.city">
+            <field name="state_id" ref="base_ec_02" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">207</field>
+            <field name="name">LAS NAVES</field>
+        </record>
+        <record id="Ecuador_city_23" model="res.country.city">
+            <field name="state_id" ref="base_ec_03" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">301</field>
+            <field name="name">AZOGUES</field>
+        </record>
+        <record id="Ecuador_city_24" model="res.country.city">
+            <field name="state_id" ref="base_ec_03" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">302</field>
+            <field name="name">BIBLIAN</field>
+        </record>
+        <record id="Ecuador_city_25" model="res.country.city">
+            <field name="state_id" ref="base_ec_03" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">303</field>
+            <field name="name">CAÑAR</field>
+        </record>
+        <record id="Ecuador_city_26" model="res.country.city">
+            <field name="state_id" ref="base_ec_03" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">304</field>
+            <field name="name">LA TRONCAL</field>
+        </record>
+        <record id="Ecuador_city_27" model="res.country.city">
+            <field name="state_id" ref="base_ec_03" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">305</field>
+            <field name="name">EL TAMBO</field>
+        </record>
+        <record id="Ecuador_city_28" model="res.country.city">
+            <field name="state_id" ref="base_ec_03" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">306</field>
+            <field name="name">DELEG</field>
+        </record>
+        <record id="Ecuador_city_29" model="res.country.city">
+            <field name="state_id" ref="base_ec_03" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">307</field>
+            <field name="name">SUSCAL</field>
+        </record>
+        <record id="Ecuador_city_30" model="res.country.city">
+            <field name="state_id" ref="base_ec_04" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">401</field>
+            <field name="name">TULCAN</field>
+        </record>
+        <record id="Ecuador_city_31" model="res.country.city">
+            <field name="state_id" ref="base_ec_04" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">402</field>
+            <field name="name">BOLIVAR</field>
+        </record>
+        <record id="Ecuador_city_32" model="res.country.city">
+            <field name="state_id" ref="base_ec_04" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">403</field>
+            <field name="name">ESPEJO</field>
+        </record>
+        <record id="Ecuador_city_33" model="res.country.city">
+            <field name="state_id" ref="base_ec_04" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">404</field>
+            <field name="name">MIRA</field>
+        </record>
+        <record id="Ecuador_city_34" model="res.country.city">
+            <field name="state_id" ref="base_ec_04" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">405</field>
+            <field name="name">MONTUFAR</field>
+        </record>
+        <record id="Ecuador_city_35" model="res.country.city">
+            <field name="state_id" ref="base_ec_04" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">406</field>
+            <field name="name">SAN PEDRO DE HUACA</field>
+        </record>
+        <record id="Ecuador_city_36" model="res.country.city">
+            <field name="state_id" ref="base_ec_05" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">501</field>
+            <field name="name">LATACUNGA</field>
+        </record>
+        <record id="Ecuador_city_37" model="res.country.city">
+            <field name="state_id" ref="base_ec_05" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">502</field>
+            <field name="name">LA MANA</field>
+        </record>
+        <record id="Ecuador_city_38" model="res.country.city">
+            <field name="state_id" ref="base_ec_05" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">503</field>
+            <field name="name">PANGUA</field>
+        </record>
+        <record id="Ecuador_city_39" model="res.country.city">
+            <field name="state_id" ref="base_ec_05" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">504</field>
+            <field name="name">PUJILI</field>
+        </record>
+        <record id="Ecuador_city_40" model="res.country.city">
+            <field name="state_id" ref="base_ec_05" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">505</field>
+            <field name="name">SALCEDO</field>
+        </record>
+        <record id="Ecuador_city_41" model="res.country.city">
+            <field name="state_id" ref="base_ec_05" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">506</field>
+            <field name="name">SAQUISILI</field>
+        </record>
+        <record id="Ecuador_city_42" model="res.country.city">
+            <field name="state_id" ref="base_ec_05" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">507</field>
+            <field name="name">SIGCHOS</field>
+        </record>
+        <record id="Ecuador_city_43" model="res.country.city">
+            <field name="state_id" ref="base_ec_06" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">601</field>
+            <field name="name">RIOBAMBA</field>
+        </record>
+        <record id="Ecuador_city_44" model="res.country.city">
+            <field name="state_id" ref="base_ec_06" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">602</field>
+            <field name="name">ALAUSI</field>
+        </record>
+        <record id="Ecuador_city_45" model="res.country.city">
+            <field name="state_id" ref="base_ec_06" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">603</field>
+            <field name="name">COLTA</field>
+        </record>
+        <record id="Ecuador_city_46" model="res.country.city">
+            <field name="state_id" ref="base_ec_06" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">604</field>
+            <field name="name">CHAMBO</field>
+        </record>
+        <record id="Ecuador_city_47" model="res.country.city">
+            <field name="state_id" ref="base_ec_06" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">605</field>
+            <field name="name">CHUNCHI</field>
+        </record>
+        <record id="Ecuador_city_48" model="res.country.city">
+            <field name="state_id" ref="base_ec_06" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">606</field>
+            <field name="name">GUAMOTE</field>
+        </record>
+        <record id="Ecuador_city_49" model="res.country.city">
+            <field name="state_id" ref="base_ec_06" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">607</field>
+            <field name="name">GUANO</field>
+        </record>
+        <record id="Ecuador_city_50" model="res.country.city">
+            <field name="state_id" ref="base_ec_06" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">608</field>
+            <field name="name">PALLATANGA</field>
+        </record>
+        <record id="Ecuador_city_51" model="res.country.city">
+            <field name="state_id" ref="base_ec_06" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">609</field>
+            <field name="name">PENIPE</field>
+        </record>
+        <record id="Ecuador_city_52" model="res.country.city">
+            <field name="state_id" ref="base_ec_06" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">610</field>
+            <field name="name">CUMANDA</field>
+        </record>
+        <record id="Ecuador_city_53" model="res.country.city">
+            <field name="state_id" ref="base_ec_07" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">701</field>
+            <field name="name">MACHALA</field>
+        </record>
+        <record id="Ecuador_city_54" model="res.country.city">
+            <field name="state_id" ref="base_ec_07" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">702</field>
+            <field name="name">ARENILLAS</field>
+        </record>
+        <record id="Ecuador_city_55" model="res.country.city">
+            <field name="state_id" ref="base_ec_07" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">703</field>
+            <field name="name">ATAHUALPA</field>
+        </record>
+        <record id="Ecuador_city_56" model="res.country.city">
+            <field name="state_id" ref="base_ec_07" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">704</field>
+            <field name="name">BALSAS</field>
+        </record>
+        <record id="Ecuador_city_57" model="res.country.city">
+            <field name="state_id" ref="base_ec_07" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">705</field>
+            <field name="name">CHILLA</field>
+        </record>
+        <record id="Ecuador_city_58" model="res.country.city">
+            <field name="state_id" ref="base_ec_07" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">706</field>
+            <field name="name">EL GUABO</field>
+        </record>
+        <record id="Ecuador_city_59" model="res.country.city">
+            <field name="state_id" ref="base_ec_07" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">707</field>
+            <field name="name">HUAQUILLAS</field>
+        </record>
+        <record id="Ecuador_city_60" model="res.country.city">
+            <field name="state_id" ref="base_ec_07" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">708</field>
+            <field name="name">MARCABELI</field>
+        </record>
+        <record id="Ecuador_city_61" model="res.country.city">
+            <field name="state_id" ref="base_ec_07" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">709</field>
+            <field name="name">PASAJE</field>
+        </record>
+        <record id="Ecuador_city_62" model="res.country.city">
+            <field name="state_id" ref="base_ec_07" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">710</field>
+            <field name="name">PIÑAS</field>
+        </record>
+        <record id="Ecuador_city_63" model="res.country.city">
+            <field name="state_id" ref="base_ec_07" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">711</field>
+            <field name="name">PORTOVELO</field>
+        </record>
+        <record id="Ecuador_city_64" model="res.country.city">
+            <field name="state_id" ref="base_ec_07" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">712</field>
+            <field name="name">SANTA ROSA</field>
+        </record>
+        <record id="Ecuador_city_65" model="res.country.city">
+            <field name="state_id" ref="base_ec_07" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">713</field>
+            <field name="name">ZARUMA</field>
+        </record>
+        <record id="Ecuador_city_66" model="res.country.city">
+            <field name="state_id" ref="base_ec_07" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">714</field>
+            <field name="name">LAS LAJAS</field>
+        </record>
+        <record id="Ecuador_city_67" model="res.country.city">
+            <field name="state_id" ref="base_ec_08" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">801</field>
+            <field name="name">ESMERALDAS</field>
+        </record>
+        <record id="Ecuador_city_68" model="res.country.city">
+            <field name="state_id" ref="base_ec_08" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">802</field>
+            <field name="name">ELOY ALFARO</field>
+        </record>
+        <record id="Ecuador_city_69" model="res.country.city">
+            <field name="state_id" ref="base_ec_08" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">803</field>
+            <field name="name">MUISNE</field>
+        </record>
+        <record id="Ecuador_city_70" model="res.country.city">
+            <field name="state_id" ref="base_ec_08" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">804</field>
+            <field name="name">QUININDE</field>
+        </record>
+        <record id="Ecuador_city_71" model="res.country.city">
+            <field name="state_id" ref="base_ec_08" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">805</field>
+            <field name="name">SAN LORENZO</field>
+        </record>
+        <record id="Ecuador_city_72" model="res.country.city">
+            <field name="state_id" ref="base_ec_08" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">806</field>
+            <field name="name">ATACAMES</field>
+        </record>
+        <record id="Ecuador_city_73" model="res.country.city">
+            <field name="state_id" ref="base_ec_08" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">807</field>
+            <field name="name">RIOVERDE</field>
+        </record>
+        <record id="Ecuador_city_74" model="res.country.city">
+            <field name="state_id" ref="base_ec_08" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">808</field>
+            <field name="name">LA CONCORDIA</field>
+        </record>
+        <record id="Ecuador_city_75" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">901</field>
+            <field name="name">GUAYAQUIL</field>
+        </record>
+        <record id="Ecuador_city_76" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">902</field>
+            <field name="name">ALFREDO BAQUERIZO MORENO</field>
+        </record>
+        <record id="Ecuador_city_77" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">903</field>
+            <field name="name">BALAO</field>
+        </record>
+        <record id="Ecuador_city_78" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">904</field>
+            <field name="name">BALZAR</field>
+        </record>
+        <record id="Ecuador_city_79" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">905</field>
+            <field name="name">COLIMES</field>
+        </record>
+        <record id="Ecuador_city_80" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">906</field>
+            <field name="name">DAULE</field>
+        </record>
+        <record id="Ecuador_city_81" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">907</field>
+            <field name="name">DURAN</field>
+        </record>
+        <record id="Ecuador_city_82" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">908</field>
+            <field name="name">EMPALME</field>
+        </record>
+        <record id="Ecuador_city_83" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">909</field>
+            <field name="name">EL TRIUNFO</field>
+        </record>
+        <record id="Ecuador_city_84" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">910</field>
+            <field name="name">MILAGRO</field>
+        </record>
+        <record id="Ecuador_city_85" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">911</field>
+            <field name="name">NARANJAL</field>
+        </record>
+        <record id="Ecuador_city_86" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">912</field>
+            <field name="name">NARANJITO</field>
+        </record>
+        <record id="Ecuador_city_87" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">913</field>
+            <field name="name">PALESTINA</field>
+        </record>
+        <record id="Ecuador_city_88" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">914</field>
+            <field name="name">PEDRO CARBO</field>
+        </record>
+        <record id="Ecuador_city_89" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">916</field>
+            <field name="name">SAMBORONDON</field>
+        </record>
+        <record id="Ecuador_city_90" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">918</field>
+            <field name="name">SANTA LUCIA</field>
+        </record>
+        <record id="Ecuador_city_91" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">919</field>
+            <field name="name">SALITRE</field>
+        </record>
+        <record id="Ecuador_city_92" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">920</field>
+            <field name="name">SAN JACINTO DE YAGUACHI</field>
+        </record>
+        <record id="Ecuador_city_93" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">921</field>
+            <field name="name">PLAYAS</field>
+        </record>
+        <record id="Ecuador_city_94" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">922</field>
+            <field name="name">SIMON BOLIVAR</field>
+        </record>
+        <record id="Ecuador_city_95" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">923</field>
+            <field name="name">CRNEL. MARCELINO MARIDUEÑA</field>
+        </record>
+        <record id="Ecuador_city_96" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">923</field>
+            <field name="name">CRNEL. MARCELINO MARIDUEÑA</field>
+        </record>
+        <record id="Ecuador_city_97" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">924</field>
+            <field name="name">LOMAS DE SARGENTILLO</field>
+        </record>
+        <record id="Ecuador_city_98" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">925</field>
+            <field name="name">NOBOL</field>
+        </record>
+        <record id="Ecuador_city_99" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">927</field>
+            <field name="name">GNRAL. ANTONIO ELIZALDE</field>
+        </record>
+        <record id="Ecuador_city_100" model="res.country.city">
+            <field name="state_id" ref="base_ec_09" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">928</field>
+            <field name="name">ISIDRO AYORA</field>
+        </record>
+        <record id="Ecuador_city_101" model="res.country.city">
+            <field name="state_id" ref="base_ec_10" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1001</field>
+            <field name="name">IBARRA</field>
+        </record>
+        <record id="Ecuador_city_102" model="res.country.city">
+            <field name="state_id" ref="base_ec_10" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1002</field>
+            <field name="name">ANTONIO ANTE</field>
+        </record>
+        <record id="Ecuador_city_103" model="res.country.city">
+            <field name="state_id" ref="base_ec_10" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1003</field>
+            <field name="name">COTACACHI</field>
+        </record>
+        <record id="Ecuador_city_104" model="res.country.city">
+            <field name="state_id" ref="base_ec_10" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1004</field>
+            <field name="name">OTAVALO</field>
+        </record>
+        <record id="Ecuador_city_105" model="res.country.city">
+            <field name="state_id" ref="base_ec_10" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1005</field>
+            <field name="name">PIMAMPIRO</field>
+        </record>
+        <record id="Ecuador_city_106" model="res.country.city">
+            <field name="state_id" ref="base_ec_10" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1006</field>
+            <field name="name">SAN MIGUEL DE URCUQUI</field>
+        </record>
+        <record id="Ecuador_city_107" model="res.country.city">
+            <field name="state_id" ref="base_ec_11" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1101</field>
+            <field name="name">LOJA</field>
+        </record>
+        <record id="Ecuador_city_108" model="res.country.city">
+            <field name="state_id" ref="base_ec_11" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1102</field>
+            <field name="name">CALVAS</field>
+        </record>
+        <record id="Ecuador_city_109" model="res.country.city">
+            <field name="state_id" ref="base_ec_11" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1103</field>
+            <field name="name">CATAMAYO</field>
+        </record>
+        <record id="Ecuador_city_110" model="res.country.city">
+            <field name="state_id" ref="base_ec_11" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1104</field>
+            <field name="name">CELICA</field>
+        </record>
+        <record id="Ecuador_city_111" model="res.country.city">
+            <field name="state_id" ref="base_ec_11" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1105</field>
+            <field name="name">CHAGUARPAMBA</field>
+        </record>
+        <record id="Ecuador_city_112" model="res.country.city">
+            <field name="state_id" ref="base_ec_11" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1106</field>
+            <field name="name">ESPINDOLA</field>
+        </record>
+        <record id="Ecuador_city_113" model="res.country.city">
+            <field name="state_id" ref="base_ec_11" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1107</field>
+            <field name="name">GONZANAMA</field>
+        </record>
+        <record id="Ecuador_city_114" model="res.country.city">
+            <field name="state_id" ref="base_ec_11" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1108</field>
+            <field name="name">MACARA</field>
+        </record>
+        <record id="Ecuador_city_115" model="res.country.city">
+            <field name="state_id" ref="base_ec_11" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1109</field>
+            <field name="name">PALTAS</field>
+        </record>
+        <record id="Ecuador_city_116" model="res.country.city">
+            <field name="state_id" ref="base_ec_11" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1110</field>
+            <field name="name">PUYANGO</field>
+        </record>
+        <record id="Ecuador_city_117" model="res.country.city">
+            <field name="state_id" ref="base_ec_11" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1111</field>
+            <field name="name">SARAGURO</field>
+        </record>
+        <record id="Ecuador_city_118" model="res.country.city">
+            <field name="state_id" ref="base_ec_11" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1112</field>
+            <field name="name">SOZORANGA</field>
+        </record>
+         <record id="Ecuador_city_119" model="res.country.city">
+            <field name="state_id" ref="base_ec_11" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1113</field>
+            <field name="name">ZAPOTILLO</field>
+        </record>
+         <record id="Ecuador_city_120" model="res.country.city">
+            <field name="state_id" ref="base_ec_11" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1114</field>
+            <field name="name">PINDAL</field>
+        </record>
+         <record id="Ecuador_city_121" model="res.country.city">
+            <field name="state_id" ref="base_ec_11" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1115</field>
+            <field name="name">QUILANGA</field>
+        </record>
+         <record id="Ecuador_city_122" model="res.country.city">
+            <field name="state_id" ref="base_ec_11" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1116</field>
+            <field name="name">OLMEDO</field>
+        </record>
+        <record id="Ecuador_city_123" model="res.country.city">
+            <field name="state_id" ref="base_ec_12" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1201</field>
+            <field name="name">BABAHOYO</field>
+        </record>
+        <record id="Ecuador_city_124" model="res.country.city">
+            <field name="state_id" ref="base_ec_12" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1202</field>
+            <field name="name">BABA</field>
+        </record>
+        <record id="Ecuador_city_125" model="res.country.city">
+            <field name="state_id" ref="base_ec_12" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1203</field>
+            <field name="name">MONTALVO</field>
+        </record>
+        <record id="Ecuador_city_126" model="res.country.city">
+            <field name="state_id" ref="base_ec_12" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1204</field>
+            <field name="name">PUEBLOVIEJO</field>
+        </record>
+        <record id="Ecuador_city_127" model="res.country.city">
+            <field name="state_id" ref="base_ec_12" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1205</field>
+            <field name="name">QUEVEDO</field>
+        </record>
+        <record id="Ecuador_city_128" model="res.country.city">
+            <field name="state_id" ref="base_ec_12" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1206</field>
+            <field name="name">URDANETA</field>
+        </record>
+        <record id="Ecuador_city_129" model="res.country.city">
+            <field name="state_id" ref="base_ec_12" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1207</field>
+            <field name="name">VENTANAS</field>
+        </record>
+        <record id="Ecuador_city_130" model="res.country.city">
+            <field name="state_id" ref="base_ec_12" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1208</field>
+            <field name="name">VINCES</field>
+        </record>
+        <record id="Ecuador_city_131" model="res.country.city">
+            <field name="state_id" ref="base_ec_12" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1209</field>
+            <field name="name">PALENQUE</field>
+        </record>
+        <record id="Ecuador_city_132" model="res.country.city">
+            <field name="state_id" ref="base_ec_12" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1210</field>
+            <field name="name">BUENA FE</field>
+        </record>
+        <record id="Ecuador_city_133" model="res.country.city">
+            <field name="state_id" ref="base_ec_12" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1211</field>
+            <field name="name">VALENCIA</field>
+        </record>
+        <record id="Ecuador_city_134" model="res.country.city">
+            <field name="state_id" ref="base_ec_12" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1212</field>
+            <field name="name">MOCACHE</field>
+        </record>
+        <record id="Ecuador_city_135" model="res.country.city">
+            <field name="state_id" ref="base_ec_12" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1213</field>
+            <field name="name">QUINSALOMA</field>
+        </record>
+        <record id="Ecuador_city_136" model="res.country.city">
+            <field name="state_id" ref="base_ec_13" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1301</field>
+            <field name="name">PORTOVIEJO</field>
+        </record>
+        <record id="Ecuador_city_137" model="res.country.city">
+            <field name="state_id" ref="base_ec_13" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1302</field>
+            <field name="name">BOLIVAR</field>
+        </record>
+        <record id="Ecuador_city_138" model="res.country.city">
+            <field name="state_id" ref="base_ec_13" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1303</field>
+            <field name="name">CHONE</field>
+        </record>
+        <record id="Ecuador_city_139" model="res.country.city">
+            <field name="state_id" ref="base_ec_13" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1304</field>
+            <field name="name">EL CARMEN</field>
+        </record>
+        <record id="Ecuador_city_140" model="res.country.city">
+            <field name="state_id" ref="base_ec_13" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1305</field>
+            <field name="name">FLAVIO ALFARO</field>
+        </record>
+        <record id="Ecuador_city_141" model="res.country.city">
+            <field name="state_id" ref="base_ec_13" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1306</field>
+            <field name="name">JIPIJAPA</field>
+        </record>
+        <record id="Ecuador_city_142" model="res.country.city">
+            <field name="state_id" ref="base_ec_13" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1307</field>
+            <field name="name">JUNIN</field>
+        </record>
+        <record id="Ecuador_city_143" model="res.country.city">
+            <field name="state_id" ref="base_ec_13" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1308</field>
+            <field name="name">MANTA</field>
+        </record>
+        <record id="Ecuador_city_144" model="res.country.city">
+            <field name="state_id" ref="base_ec_13" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1309</field>
+            <field name="name">MONTECRISTI</field>
+        </record>
+        <record id="Ecuador_city_145" model="res.country.city">
+            <field name="state_id" ref="base_ec_13" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1310</field>
+            <field name="name">PAJAN</field>
+        </record>
+        <record id="Ecuador_city_146" model="res.country.city">
+            <field name="state_id" ref="base_ec_13" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1311</field>
+            <field name="name">PICHINCHA</field>
+        </record>
+        <record id="Ecuador_city_147" model="res.country.city">
+            <field name="state_id" ref="base_ec_13" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1312</field>
+            <field name="name">ROCAFUERTE</field>
+        </record>
+        <record id="Ecuador_city_148" model="res.country.city">
+            <field name="state_id" ref="base_ec_13" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1313</field>
+            <field name="name">SANTA ANA</field>
+        </record>
+        <record id="Ecuador_city_149" model="res.country.city">
+            <field name="state_id" ref="base_ec_13" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1314</field>
+            <field name="name">SUCRE</field>
+        </record>
+        <record id="Ecuador_city_150" model="res.country.city">
+            <field name="state_id" ref="base_ec_13" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1315</field>
+            <field name="name">TOSAGUA</field>
+        </record>
+        <record id="Ecuador_city_151" model="res.country.city">
+            <field name="state_id" ref="base_ec_13" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1316</field>
+            <field name="name">24 DE MAYO</field>
+        </record>
+        <record id="Ecuador_city_152" model="res.country.city">
+            <field name="state_id" ref="base_ec_13" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1317</field>
+            <field name="name">PEDERNALES</field>
+        </record>
+        <record id="Ecuador_city_153" model="res.country.city">
+            <field name="state_id" ref="base_ec_13" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1318</field>
+            <field name="name">OLMEDO</field>
+        </record>
+        <record id="Ecuador_city_154" model="res.country.city">
+            <field name="state_id" ref="base_ec_13" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1319</field>
+            <field name="name">PUERTO LOPEZ</field>
+        </record>
+        <record id="Ecuador_city_155" model="res.country.city">
+            <field name="state_id" ref="base_ec_13" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1320</field>
+            <field name="name">JAMA</field>
+        </record>
+        <record id="Ecuador_city_156" model="res.country.city">
+            <field name="state_id" ref="base_ec_13" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1321</field>
+            <field name="name">JARAMIJO</field>
+        </record>
+        <record id="Ecuador_city_157" model="res.country.city">
+            <field name="state_id" ref="base_ec_13" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1322</field>
+            <field name="name">SAN VICENTE</field>
+        </record>
+        <record id="Ecuador_city_158" model="res.country.city">
+            <field name="state_id" ref="base_ec_14" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1401</field>
+            <field name="name">MORONA</field>
+        </record>
+        <record id="Ecuador_city_159" model="res.country.city">
+            <field name="state_id" ref="base_ec_14" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1402</field>
+            <field name="name">GUALAQUIZA</field>
+        </record>
+        <record id="Ecuador_city_160" model="res.country.city">
+            <field name="state_id" ref="base_ec_14" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1403</field>
+            <field name="name">LIMON INDANZA</field>
+        </record>
+        <record id="Ecuador_city_161" model="res.country.city">
+            <field name="state_id" ref="base_ec_14" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1404</field>
+            <field name="name">PALORA</field>
+        </record>
+        <record id="Ecuador_city_162" model="res.country.city">
+            <field name="state_id" ref="base_ec_14" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1405</field>
+            <field name="name">SANTIAGO</field>
+        </record>
+        <record id="Ecuador_city_163" model="res.country.city">
+            <field name="state_id" ref="base_ec_14" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1406</field>
+            <field name="name">SUCUA</field>
+        </record>
+        <record id="Ecuador_city_164" model="res.country.city">
+            <field name="state_id" ref="base_ec_14" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1407</field>
+            <field name="name">HUAMBOYA</field>
+        </record>
+        <record id="Ecuador_city_165" model="res.country.city">
+            <field name="state_id" ref="base_ec_14" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1408</field>
+            <field name="name">SAN JUAN BOSCO</field>
+        </record>
+        <record id="Ecuador_city_166" model="res.country.city">
+            <field name="state_id" ref="base_ec_14" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1409</field>
+            <field name="name">TAISHA</field>
+        </record>
+        <record id="Ecuador_city_167" model="res.country.city">
+            <field name="state_id" ref="base_ec_14" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1410</field>
+            <field name="name">LOGROÐO</field>
+        </record>
+        <record id="Ecuador_city_168" model="res.country.city">
+            <field name="state_id" ref="base_ec_14" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1411</field>
+            <field name="name">PABLO SEXTO</field>
+        </record>
+        <record id="Ecuador_city_169" model="res.country.city">
+            <field name="state_id" ref="base_ec_14" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1412</field>
+            <field name="name">TIWINTZA</field>
+        </record>
+        <record id="Ecuador_city_170" model="res.country.city">
+            <field name="state_id" ref="base_ec_15" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1501</field>
+            <field name="name">TENA</field>
+        </record>
+        <record id="Ecuador_city_171" model="res.country.city">
+            <field name="state_id" ref="base_ec_15" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1503</field>
+            <field name="name">ARCHIDONA</field>
+        </record>
+        <record id="Ecuador_city_172" model="res.country.city">
+            <field name="state_id" ref="base_ec_15" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1504</field>
+            <field name="name">EL CHACO</field>
+        </record>
+        <record id="Ecuador_city_173" model="res.country.city">
+            <field name="state_id" ref="base_ec_15" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1507</field>
+            <field name="name">QUIJOS</field>
+        </record>
+        <record id="Ecuador_city_174" model="res.country.city">
+            <field name="state_id" ref="base_ec_15" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1509</field>
+            <field name="name">CARLOS JULIO AROSEMENA TOLA</field>
+        </record>
+        <record id="Ecuador_city_175" model="res.country.city">
+            <field name="state_id" ref="base_ec_16" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1601</field>
+            <field name="name">PASTAZA</field>
+        </record>
+        <record id="Ecuador_city_176" model="res.country.city">
+            <field name="state_id" ref="base_ec_16" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1602</field>
+            <field name="name">MERA</field>
+        </record>
+        <record id="Ecuador_city_177" model="res.country.city">
+            <field name="state_id" ref="base_ec_16" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1603</field>
+            <field name="name">SANTA CLARA</field>
+        </record>
+        <record id="Ecuador_city_178" model="res.country.city">
+            <field name="state_id" ref="base_ec_16" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1604</field>
+            <field name="name">ARAJUNO</field>
+        </record>
+        <record id="Ecuador_city_179" model="res.country.city">
+            <field name="state_id" ref="base_ec_17" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1701</field>
+            <field name="name">QUITO</field>
+        </record>
+        <record id="Ecuador_city_180" model="res.country.city">
+            <field name="state_id" ref="base_ec_17" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1702</field>
+            <field name="name">CAYAMBE</field>
+        </record>
+        <record id="Ecuador_city_181" model="res.country.city">
+            <field name="state_id" ref="base_ec_17" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1703</field>
+            <field name="name">MEJIA</field>
+        </record>
+        <record id="Ecuador_city_182" model="res.country.city">
+            <field name="state_id" ref="base_ec_17" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1704</field>
+            <field name="name">PEDRO MONCAYO</field>
+        </record>
+        <record id="Ecuador_city_183" model="res.country.city">
+            <field name="state_id" ref="base_ec_17" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1705</field>
+            <field name="name">RUMIÑAHUI</field>
+        </record>
+        <record id="Ecuador_city_184" model="res.country.city">
+            <field name="state_id" ref="base_ec_17" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1707</field>
+            <field name="name">SAN MIGUEL DE LOS BANCOS</field>
+        </record>
+        <record id="Ecuador_city_185" model="res.country.city">
+            <field name="state_id" ref="base_ec_17" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1708</field>
+            <field name="name">PEDRO VICENTE MALDONADO</field>
+        </record>
+        <record id="Ecuador_city_186" model="res.country.city">
+            <field name="state_id" ref="base_ec_17" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1709</field>
+            <field name="name">PUERTO QUITO</field>
+        </record>
+        <record id="Ecuador_city_187" model="res.country.city">
+            <field name="state_id" ref="base_ec_18" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1801</field>
+            <field name="name">AMBATO</field>
+        </record>
+        <record id="Ecuador_city_188" model="res.country.city">
+            <field name="state_id" ref="base_ec_18" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1802</field>
+            <field name="name">BAÑOS DE AGUA SANTA</field>
+        </record>
+        <record id="Ecuador_city_189" model="res.country.city">
+            <field name="state_id" ref="base_ec_18" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1803</field>
+            <field name="name">CEVALLOS</field>
+        </record>
+        <record id="Ecuador_city_190" model="res.country.city">
+            <field name="state_id" ref="base_ec_18" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1804</field>
+            <field name="name">MOCHA</field>
+        </record>
+        <record id="Ecuador_city_191" model="res.country.city">
+            <field name="state_id" ref="base_ec_18" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1804</field>
+            <field name="name">MOCHA</field>
+        </record>
+        <record id="Ecuador_city_192" model="res.country.city">
+            <field name="state_id" ref="base_ec_18" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1805</field>
+            <field name="name">PATATE</field>
+        </record>
+        <record id="Ecuador_city_193" model="res.country.city">
+            <field name="state_id" ref="base_ec_18" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1806</field>
+            <field name="name">QUERO</field>
+        </record>
+        <record id="Ecuador_city_194" model="res.country.city">
+            <field name="state_id" ref="base_ec_18" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1807</field>
+            <field name="name">SAN PEDRO DE PELILEO</field>
+        </record>
+        <record id="Ecuador_city_195" model="res.country.city">
+            <field name="state_id" ref="base_ec_18" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1808</field>
+            <field name="name">SANTIAGO DE PILLARO</field>
+        </record>
+        <record id="Ecuador_city_196" model="res.country.city">
+            <field name="state_id" ref="base_ec_18" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1809</field>
+            <field name="name">TISALEO</field>
+        </record>
+        <record id="Ecuador_city_197" model="res.country.city">
+            <field name="state_id" ref="base_ec_19" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1901</field>
+            <field name="name">ZAMORA</field>
+        </record>
+        <record id="Ecuador_city_198" model="res.country.city">
+            <field name="state_id" ref="base_ec_19" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1902</field>
+            <field name="name">CHINCHIPE</field>
+        </record>
+        <record id="Ecuador_city_199" model="res.country.city">
+            <field name="state_id" ref="base_ec_19" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1903</field>
+            <field name="name">NANGARITZA</field>
+        </record>
+        <record id="Ecuador_city_200" model="res.country.city">
+            <field name="state_id" ref="base_ec_19" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1904</field>
+            <field name="name">YACUAMBI</field>
+        </record>
+        <record id="Ecuador_city_201" model="res.country.city">
+            <field name="state_id" ref="base_ec_19" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1905</field>
+            <field name="name">YANTZAZA</field>
+        </record>
+        <record id="Ecuador_city_202" model="res.country.city">
+            <field name="state_id" ref="base_ec_19" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1906</field>
+            <field name="name">EL PANGUI</field>
+        </record>
+        <record id="Ecuador_city_203" model="res.country.city">
+            <field name="state_id" ref="base_ec_19" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1907</field>
+            <field name="name">CENTINELA DEL CONDOR</field>
+        </record>
+        <record id="Ecuador_city_204" model="res.country.city">
+            <field name="state_id" ref="base_ec_19" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1908</field>
+            <field name="name">PALANDA</field>
+        </record>
+        <record id="Ecuador_city_205" model="res.country.city">
+            <field name="state_id" ref="base_ec_19" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">1909</field>
+            <field name="name">PAQUISHA</field>
+        </record>
+        <record id="Ecuador_city_206" model="res.country.city">
+            <field name="state_id" ref="base_ec_20" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">2001</field>
+            <field name="name">SAN CRISTOBAL</field>
+        </record>
+        <record id="Ecuador_city_207" model="res.country.city">
+            <field name="state_id" ref="base_ec_20" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">2002</field>
+            <field name="name">ISABELA</field>
+        </record>
+        <record id="Ecuador_city_208" model="res.country.city">
+            <field name="state_id" ref="base_ec_20" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">2003</field>
+            <field name="name">SANTA CRUZ</field>
+        </record>
+        <record id="Ecuador_city_209" model="res.country.city">
+            <field name="state_id" ref="base_ec_21" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">2101</field>
+            <field name="name">LAGO AGRIO</field>
+        </record>
+        <record id="Ecuador_city_210" model="res.country.city">
+            <field name="state_id" ref="base_ec_21" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">2102</field>
+            <field name="name">GONZALO PIZARRO</field>
+        </record>
+        <record id="Ecuador_city_211" model="res.country.city">
+            <field name="state_id" ref="base_ec_21" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">2103</field>
+            <field name="name">PUTUMAYO</field>
+        </record>
+        <record id="Ecuador_city_212" model="res.country.city">
+            <field name="state_id" ref="base_ec_21" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">2104</field>
+            <field name="name">SHUSHUFINDI</field>
+        </record>
+        <record id="Ecuador_city_213" model="res.country.city">
+            <field name="state_id" ref="base_ec_21" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">2105</field>
+            <field name="name">SUCUMBIOS</field>
+        </record>
+        <record id="Ecuador_city_214" model="res.country.city">
+            <field name="state_id" ref="base_ec_21" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">2106</field>
+            <field name="name">CASCALES</field>
+        </record>
+        <record id="Ecuador_city_215" model="res.country.city">
+            <field name="state_id" ref="base_ec_21" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">2107</field>
+            <field name="name">CUYABENO</field>
+        </record>
+        <record id="Ecuador_city_216" model="res.country.city">
+            <field name="state_id" ref="base_ec_22" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">2201</field>
+            <field name="name">ORELLANA</field>
+        </record>
+        <record id="Ecuador_city_217" model="res.country.city">
+            <field name="state_id" ref="base_ec_22" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">2202</field>
+            <field name="name">AGUARICO</field>
+        </record>
+        <record id="Ecuador_city_218" model="res.country.city">
+            <field name="state_id" ref="base_ec_22" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">2203</field>
+            <field name="name">LA JOYA DE LOS SACHAS</field>
+        </record>
+        <record id="Ecuador_city_219" model="res.country.city">
+            <field name="state_id" ref="base_ec_22" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">2204</field>
+            <field name="name">LORETO</field>
+        </record>
+        <record id="Ecuador_city_220" model="res.country.city">
+            <field name="state_id" ref="base_ec_23" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">2301</field>
+            <field name="name">SANTO DOMINGO</field>
+        </record>
+        <record id="Ecuador_city_221" model="res.country.city">
+            <field name="state_id" ref="base_ec_24" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">2401</field>
+            <field name="name">SANTA ELENA</field>
+        </record>
+        <record id="Ecuador_city_222" model="res.country.city">
+            <field name="state_id" ref="base_ec_24" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">2402</field>
+            <field name="name">LA LIBERTAD</field>
+        </record>
+        <record id="Ecuador_city_223" model="res.country.city">
+            <field name="state_id" ref="base_ec_24" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">2403</field>
+            <field name="name">SALINAS</field>
+        </record>
+        <record id="Ecuador_city_224" model="res.country.city">
+            <field name="state_id" ref="base_ec_90" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">9001</field>
+            <field name="name">LAS GOLONDRINAS</field>
+        </record>
+        <record id="Ecuador_city_225" model="res.country.city">
+            <field name="state_id" ref="base_ec_90" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">9003</field>
+            <field name="name">MANGA DEL CURA</field>
+        </record>
+        <record id="Ecuador_city_226" model="res.country.city">
+            <field name="state_id" ref="base_ec_90" />
+            <field name="country_ids" ref="base.ec" />
+            <field name="code">9004</field>
+            <field name="name">EL PIEDRERO</field>
+        </record>
+      </data>
+</odoo>
