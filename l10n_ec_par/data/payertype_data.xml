@@ -28,7 +28,7 @@
         </record>
 
         <!-- Tax ID Type -->
-        <record id="tax_id_type_07" model="lec.taxid.type">
+        <record id="tax_payer_type_07" model="lec.taxid.type">
             <field name="name">VENTA A CONSUMIDOR FINAL</field>
             <field name="code">07</field>
             <field name="min_length">13</field>
@@ -36,14 +36,13 @@
         </record>
 
         <!-- Tax ID Type -->
-        <record id="tax_id_type_08" model="lec.taxid.type">
+        <record id="tax_payer_type_08" model="lec.taxid.type">
             <field name="name">IDENTIFICACION DEL EXTERIOR</field>
             <field name="code">08</field>
             <field name="min_length">13</field>
             <field name="max_length">13</field>
         </record>
-
-         <!-- Tax Payer Type -->
+ <!-- Tax Payer Type -->
         <record id="tax_id_type_01" model="lec.taxpayer.type">
             <field name="name">Persona Natural Emite Factura o Nota Venta</field>
             <field name="code">01</field>
