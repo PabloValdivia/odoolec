@@ -20,7 +20,7 @@
 ###############################################################################
 
 from odoo import api, fields, models, _
-from odoo.exceptions import  ValidationError
+from odoo.exceptions import ValidationError
 
 
 class AccountMove(models.Model):
@@ -37,9 +37,23 @@ class AccountMove(models.Model):
             if len(self.authorization_code) != 10 and len(self.authorization_code) != 49:
                 raise ValidationError("Error the code is not valid")
 
-    _sql_constraints = [
-        ('no_document_unique', 'unique (document_no, partner_id)', 'The supplier already has this invoice number registered!'),
-    ]
+    @api.constrains('document_no')
+    def validate_number_invoice(self):
+        count = 0
+        moves = self.env['account.move'].search([
+            ('document_no', '=', self.document_no),
+            ('partner_id', '=', self.partner_id.id),
+            ('state', '=', 'posted')
+        ])
+        for move in moves:
+            credit_note = self.env['account.move'].search([
+                ('reversed_entry_id', '=', move.id),
+                ('state', '=', 'posted')
+            ])
+            if not credit_note:
+                count += 1
+        if count > 1:
+            raise ValidationError('El numero de factura del proveedor ya esta registrada')
 
     @api.onchange('document_no')
     def create_number(self):
