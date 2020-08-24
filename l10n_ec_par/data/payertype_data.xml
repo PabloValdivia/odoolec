@@ -4,7 +4,7 @@
 
         <!-- Tax ID Type -->
         <record id="tax_payer_type_04" model="lec.taxid.type">
-            <field name="name"></field>
+            <field name="name">RUC</field>
             <field name="code">04</field>
             <field name="min_length">13</field>
             <field name="max_length">13</field>
