@@ -14,8 +14,7 @@
                     <attribute name="invisible">True</attribute>
                 </xpath>
                 <xpath expr="//field[@name='vat']"  position="attributes">
-                    <attribute name="string">No de identificación</attribute>
-                    <attribute name="required">1</attribute>
+                    <attribute name="string">No de Identificación</attribute>
                 </xpath>
                 <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/div[1]/field[@name='state_id']" position="before">
                     <field name="city_id" placeholder="City" options="{'no_create': True}" domain="[('state_id', '=', state_id)]" />
