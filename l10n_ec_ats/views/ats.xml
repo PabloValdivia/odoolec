@@ -11,8 +11,13 @@
                     </header>
                         <sheet>
                               <group>
-                               <field name="Company_ids"/>
-                                <field name="month_date" string ="Fecha del Anexo"/>
+                                 <field name="Company_ids"/>
+                                <group>
+                                    <field name="month" string ="Mes :" />
+                                </group>
+                                  <group>
+                                    <field name="year" string ="Año : "/>
+                                </group>
                             </group>
                         </sheet>
                  </form>
