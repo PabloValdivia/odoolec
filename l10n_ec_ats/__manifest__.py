@@ -29,6 +29,7 @@
         'security/ir.model.access.csv',
         'views/purchase.xml',
         'views/sustento_sri.xml',
+        'views/ats.xml',
         'data/data_sutents_tax.xml'
     ],
     # only loaded in demonstration mode

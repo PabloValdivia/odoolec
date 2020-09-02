@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_ats_form">
+           <field name="name">ats.form</field>
+           <field name="model">ats.ec</field>
+           <field name="arch" type="xml">
+                <form string="ATS">
+                    <header>
+                    <button name="Generar_ATS" string="Generar ATS"/>
+                    </header>
+                        <sheet>
+                              <group>
+                               <field name="Company_ids"/>
+                                <field name="month_date" string ="Fecha del Anexo"/>
+                            </group>
+                        </sheet>
+                 </form>
+           </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_ats">
+          <field name="name">ATS</field>
+          <field name="res_model">ats.ec</field>
+          <field name="view_mode">form</field>
+          <field name="view_mode">tree,form</field>
+          <field name="view_id" ref="view_ats_form"/>
+        </record>
+        <menuitem name="ATS" id="menu_view_ats_form"
+                      parent="account_accountant.menu_accounting" action="action_ats"
+                      sequence="19"/>
+    </data>
+</odoo>
