@@ -53,17 +53,10 @@ class Company(models.Model):
 
     # The next method set and assign the value inserted in res.company to the corresponding field in its respective
     # partner's contact payertype in res.partner.
+
     @api.model
     def create(self, vals):
-        if not vals.get('name') or vals.get('partner_id'):
-            self.clear_caches()
-            return super(Company, self).create(vals)
-        partner = self.env['res.partner'].create({
-            'taxpayer_type': vals.get('taxpayer_type'),
-        })
-        # compute stored fields, for example address dependent fields
-        partner.flush()
-        vals['partner_id'] = partner.id
-        self.clear_caches()
         company = super(Company, self).create(vals)
+        if company.partner_id:
+            company.partner_id.write({'taxid_type': company.taxid_type.id})
         return company
