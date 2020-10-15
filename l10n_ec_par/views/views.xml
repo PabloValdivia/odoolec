@@ -107,9 +107,9 @@
     <!-- actions -->
 
     <menuitem name="TaxID Type" id="odoo-lecmenu_1_list" parent="odoo-lecmenu_1"
-              action="taxidtype_action_window"/>
+              action="taxidtype_action_window" groups="medical_user_supervisor"/>
 
     <menuitem name="Tax Payer Type" id="odoo-lec_2_list" parent="odoo-lecmenu_1"
-              action="taxpayertype_action_window"/>
+              action="taxpayertype_action_window" groups="medical_user_supervisor"/>
   </data>
 </odoo>

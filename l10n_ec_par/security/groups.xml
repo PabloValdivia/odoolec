@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.module.category" id="mudule_l10n_ec_acc">
+                <field name="name">Location Ecuador</field>
+                <field name="description">Location Ecuador</field>
+                <field name="sequence">400</field>
+        </record>
+        <record id="medical_user_supervisor" model="res.groups">
+            <field name="name">Supervisor</field>
+            <field name="comment">Supervisor Ingeint</field>
+            <field name="category_id" ref="mudule_l10n_ec_acc"/>
+        </record>
+    </data>
+</odoo>
