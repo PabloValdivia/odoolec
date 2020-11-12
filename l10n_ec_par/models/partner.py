@@ -43,13 +43,7 @@ class Partner(models.Model):
                     elif len(record.vat) > tt.max_length:
                         raise ValidationError('Tax id is major than allowed')
 
-    _sql_constraints = [('vat_unique', 'unique(vat,taxid_type)', 'Error')]
-
-    @api.constrains('vat', 'taxid_type')
-    def _check_identifier(self):
-        res = validator_identifier(self.vat, self.taxid_type)
-        if not res:
-            raise ValidationError('Error en el identificador.')
+    _sql_constraints = [('vat_unique', 'unique(vat,taxid_type)', 'Error, Identificador duplicado')]
 
     @api.depends('vat', 'name')
     def name_get(self):
