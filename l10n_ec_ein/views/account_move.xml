@@ -9,13 +9,14 @@
               <xpath expr="//field[@name='journal_id']" position="replace">
                   <field name="journal_id"/>
                   <field name="sri_payment_type"  attrs="{'invisible': [('type', '=', 'in_invoice')]}"/>
+                  <field name="sri_authorization" readonly="1"/>
               </xpath>
               <xpath expr="//button[@name='button_draft']" position="after">
                   <button string="Process Electronic Invoice"
                             type="object"
                             name="action_generate_einvoice"
                             class="oe_highlight"
-                            attrs="{'invisible': [('state', '!=', 'posted')]}"/>
+                            attrs="{'invisible': [('sri_authorization', '!=', False)]}"/>
               </xpath>
           </field>
         </record>

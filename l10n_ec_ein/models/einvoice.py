@@ -40,8 +40,8 @@ class Invoice(models.Model):
 
     SriServiceObj = SriService()
 
-    sri_authorization = fields.Many2one('sri.authorization')
-    sri_payment_type = fields.Many2one('sri.payment_type')
+    sri_authorization = fields.Many2one('sri.authorization', copy=False)
+    sri_payment_type = fields.Many2one('sri.payment_type', copy=False)
 
     def _info_invoice(self):
         """
@@ -129,15 +129,14 @@ class Invoice(models.Model):
                 'detalle_adicional': detalle_adicional
             }
             impuestos = []
-            for tax_line in invoice.invoice_line_ids:
+            for tax_line in line:
                 percent = int(tax_line.tax_ids.amount)
                 impuesto = {
                     'codigo': tax_line.tax_ids.sri_code.code,
                     'codigoPorcentaje': tax_line.tax_ids.sri_rate.code,
                     'tarifa': percent,
-                    'baseImponible': '{:.2f}'.format(line.price_subtotal),
-                    'valor': '{:.2f}'.format(line.price_total -
-                                             tax_line.price_subtotal)
+                    'baseImponible': '{:.2f}'.format(tax_line.price_subtotal),
+                    'valor': '{:.2f}'.format(tax_line.price_subtotal * (tax_line.tax_ids.amount / 100))
                 }
                 impuestos.append(impuesto)
         detalle.update({'impuestos': impuestos})
@@ -159,7 +158,6 @@ class Invoice(models.Model):
         return auth_invoice
 
     def action_generate_einvoice(self):
-
         for obj in self:
             if obj.type not in ['out_invoice', 'out_refund'] and not obj.journal_id.is_electronic_document:
                 continue
@@ -209,7 +207,7 @@ class Invoice(models.Model):
                 auth['estado'],
                 'PRUEBAS' if self.company_id.env_service == '1' else 'PRODUCCION'
             )
-            self.message_post(body=message)
+            self.message_post(body=message, attachments=auth_einvoice)
             # self.send_document(
             #    attachments=[a.id for a in attach],
             #    tmpl='l10n_ec_ein.email_template_einvoice'
