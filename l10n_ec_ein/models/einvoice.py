@@ -2,18 +2,14 @@ import base64
 import os
 import logging
 import itertools
-from io import StringIO
-from shutil import copyfile
-from xml.dom import minidom
 
 from odoo.addons.account.models.account_payment import MAP_INVOICE_TYPE_PARTNER_TYPE
-
-import pytz
 from jinja2 import Environment, FileSystemLoader, Template
 
 from odoo import api, models, fields
 from odoo.exceptions import Warning as UserError
 
+from odoo.addons.account_test import report
 from odoo.addons.base.models.ir_attachment import IrAttachment
 from odoo.tools import safe_eval
 
@@ -207,11 +203,11 @@ class Invoice(models.Model):
                 auth['estado'],
                 'PRUEBAS' if self.company_id.env_service == '1' else 'PRODUCCION'
             )
-            self.message_post(body=message, attachments=auth_einvoice)
-            # self.send_document(
-            #    attachments=[a.id for a in attach],
-            #    tmpl='l10n_ec_ein.email_template_einvoice'
-            # )
+            self.message_post(body=message, attachments=attach)
+            self.send_document(
+                attachments=[a.id for a in attach],
+                tmpl='l10n_ec_ein.email_template_einvoice'
+            )
 
     def add_attachment(self, xml_element, auth):
         attach = self.env['ir.attachment'].create(
@@ -225,14 +221,13 @@ class Invoice(models.Model):
         )
         return attach
 
-    @api.model
     def send_document(self, attachments=None, tmpl=False):
         self.ensure_one()
         self._logger.info('Enviando documento electronico por correo')
         tmpl = self.env.ref(tmpl)
         tmpl.send_mail(  # noqa
             self.id,
-            email_values={'attachment_ids': attachments}
+            #email_values={'attachment_ids': attachments}
         )
         self.sent = True
         return True
@@ -265,3 +260,4 @@ class Invoice(models.Model):
         return Template(
             self._read_template(template_path)
         ).substitute(**kwargs)
+
