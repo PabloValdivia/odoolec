@@ -25,7 +25,7 @@ class SriAuthorization (models.Model):
             ('2', 'Production')
         ],
         string='Environment Type',
-        required=True,
+        required=False,
     )
 
 

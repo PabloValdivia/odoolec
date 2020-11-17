@@ -4,10 +4,11 @@ import base64
 import os
 import subprocess
 import logging
+import xades
+import xmlsig
 
 
 class CheckDigit(object):
-
     # Definicion modulo 11
     _MODULO_11 = {
         'BASE': 11,

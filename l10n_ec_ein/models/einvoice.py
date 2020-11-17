@@ -16,6 +16,7 @@ from odoo.exceptions import Warning as UserError
 
 from odoo.addons.base.models.ir_attachment import IrAttachment
 from odoo.tools import safe_eval
+
 from . import utils
 from . import edocument
 
@@ -121,10 +122,10 @@ class Invoice(models.Model):
             detalle = {
                 'codigoPrincipal': codigoPrincipal,
                 'descripcion': fix_chars(line.name.strip()),
-                'cantidad': '%.6f' % (line.quantity),
-                'precioUnitario': '%.6f' % (line.price_unit),
+                'cantidad': '%.6f' % line.quantity,
+                'precioUnitario': '%.6f' % line.price_unit,
                 'descuento': '%.2f' % discount,
-                'precioTotalSinImpuesto': '%.2f' % (line.price_subtotal),
+                'precioTotalSinImpuesto': '%.2f' % line.price_subtotal,
                 'detalle_adicional': detalle_adicional
             }
             impuestos = []
@@ -167,7 +168,10 @@ class Invoice(models.Model):
             inv_xml = DocumentXML(einvoice, obj.type)
             if not inv_xml.validate_xml():
                 raise UserError("Not Valid Schema")
-            xades = Xades()
+
+            xades = self.env['sri.key.type'].search([
+                ('company_id', '=', self.company_id.id)
+            ])
             file_binary = obj.company_id.electronic_signature[0].datas
             pk12_path = '/tmp/sign.p12'
             pk12_file = open(pk12_path, 'wb')
@@ -179,8 +183,7 @@ class Invoice(models.Model):
             to_sign_file.write(einvoice)
             to_sign_file.close()
             pk12_file.close()
-            password = obj.company_id.password_electronic_signature
-            signed_document = xades.sign(to_sign_file, password)
+            signed_document = xades.action_sign(to_sign_file)
             ok, errores = inv_xml.send_receipt(signed_document)
             if not ok:
                 raise UserError(errores)
@@ -189,7 +192,13 @@ class Invoice(models.Model):
                 msg = ' '.join(list(itertools.chain(*m)))
                 raise UserError(msg)
             auth_einvoice = self.render_authorized_einvoice(auth)
-            self.update_document(auth, [access_key, emission_code])
+            sri_auth = self.env['sri.authorization'].create({
+                'sri_authorization_code': auth['numeroAutorizacion'],
+                'sri_authorization_date': auth['fechaAutorizacion'],
+                'account_move': self.id,
+                'env_service': self.company_id.env_service
+            })
+            self.write({'sri_authorization': sri_auth.id})
             attach = self.add_attachment(auth_einvoice, auth)
             message = """
             DOCUMENTO ELECTRONICO GENERADO <br><br>
@@ -199,29 +208,23 @@ class Invoice(models.Model):
             ESTADO DE AUTORIZACION: %s <br>
             AMBIENTE: %s <br>
             """ % (
-                self.clave_acceso,
-                self.numero_autorizacion,
-                self.fecha_autorizacion,
-                self.estado_autorizacion,
-                self.ambiente
+                auth['numeroAutorizacion'],
+                auth['numeroAutorizacion'],
+                auth['fechaAutorizacion'],
+                auth['estado'],
+                self.company_id.env_service
             )
             self.message_post(body=message)
-            self.send_document(
-                attachments=[a.id for a in attach],
-                tmpl='l10n_ec_einvoice.email_template_einvoice'
-            )
+            #vself.send_document(
+            #    attachments=[a.id for a in attach],
+            #    tmpl='l10n_ec_ein.email_template_einvoice'
+            # )
 
-    @api.model
     def add_attachment(self, xml_element, auth):
-        buf = StringIO.StringIO()
-        buf.write(xml_element.encode('utf-8'))
-        document = base64.encodebytes(buf.getvalue())
-        buf.close()
         attach = self.env['ir.attachment'].create(
             {
-                'name': '{0}.xml'.format(self.clave_acceso),
-                'datas': document,
-                'datas_fname': '{0}.xml'.format(self.clave_acceso),
+                'name': '{0}.xml'.format(auth['numeroAutorizacion']),
+                'datas': xml_element,
                 'res_model': self._name,
                 'res_id': self.id,
                 'type': 'binary'

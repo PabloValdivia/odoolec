@@ -40,7 +40,9 @@
         'views/sri_parameters.xml',
         'views/sri_tax_code.xml',
         'views/tax.xml',
-        'data/code_sri_date.xml'
+        'data/code_sri_date.xml',
+        'views/sri_sign.xml',
+        'edi/einvoice_edi.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

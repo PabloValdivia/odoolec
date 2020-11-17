@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sri_sign_form_view" model="ir.ui.view">
+            <field name="name">sri.sign.form</field>
+            <field name="model">sri.key.type</field>
+            <field name="arch" type="xml">
+                <form string="SRI Sign Type">
+                    <sheet>
+                        <button string="Sync Key"
+                            type="object"
+                            name="action_validate_and_load"
+                            class="oe_highlight"/>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="Title"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="company_id"/>
+                                <field name="file_content"/>
+                                <field name="file_name"/>
+                                <field name="password" password="true"/>
+                                <field name="active"/>
+                                <field name="state"/>
+                            </group>
+
+                            <group>
+                                <field name="emision_date"/>
+                                <field name="expire_date"/>
+                                <field name="subject_serial_number"/>
+                                <field name="subject_serial_number"/>
+
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="sri_sign_tree_view" model="ir.ui.view">
+            <field name="name">sri_sign.tree</field>
+            <field name="model">sri.key.type</field>
+            <field name="arch" type="xml">
+                <tree string="Sign">
+                    <field name="name"/>
+                    <field name="company_id"/>
+                    <field name="expire_date"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="sri_sign_act_window" model="ir.actions.act_window">
+            <field name="name">ModelTitle</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sri.key.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create a new record
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="SRI Sign" id="sri_signs_menu" parent="l10n_ec_par.odoo-lecmenu_1" action="sri_sign_act_window"/>
+
+    </data>
+</odoo>
