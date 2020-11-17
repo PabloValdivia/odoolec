@@ -30,17 +30,18 @@ class DocumentXML(object):
     document = False
 
     @classmethod
-    def __init__(self, document, type='out_invoice'):
+    def __init__(self, document=False, type='out_invoice'):
         """
         document: XML representation
         type: determinate schema
         """
-        parser = etree.XMLParser(ns_clean=True, recover=True, encoding='utf-8')
-        self.document = fromstring(document.encode('utf-8'), parser=parser)
-        self.type_document = type
-        self._schema = SCHEMAS[self.type_document]
-        self.signed_document = False
-        self.logger = logging.getLogger('xades.sri')
+        if document:
+            parser = etree.XMLParser(ns_clean=True, recover=True, encoding='utf-8')
+            self.document = fromstring(document.encode('utf-8'), parser=parser)
+            self.type_document = type
+            self._schema = SCHEMAS[self.type_document]
+            self.signed_document = False
+            self.logger = logging.getLogger('xades.sri')
 
     @classmethod
     def validate_xml(self):
@@ -68,10 +69,13 @@ class DocumentXML(object):
         buffer_xml = base64.b64encode(bytes(document, 'utf-8')).decode('ascii')
         buffer_xml = buffer_xml.replace('\n', '')
 
+        sri = SriService()
 
-        #if not utils.check_service('prueba'):
-        #    # TODO: implementar modo offline
-        #    raise 'Error SRI'('Servicio SRI no disponible.')
+        url = sri.get_ws_test()
+
+        if not utils.check_service('prueba', url):
+            # TODO: implementar modo offline
+            raise 'Error SRI'('Servicio SRI no disponible.')
 
         client = Client(SriService.get_active_ws()[0])
         result = client.service.validarComprobante(buffer_xml)
@@ -92,11 +96,11 @@ class DocumentXML(object):
         messages = []
         client = Client(SriService.get_active_ws()[1])
         result = client.service.autorizacionComprobante(access_key)
-        self.logger.debug("Respuesta de autorizacionComprobante:SRI")
-        self.logger.debug(result)
+        # self.logger.debug("Respuesta de autorizacionComprobante:SRI")
+        # self.logger.debug(result)
         autorizacion = result.autorizaciones[0][0]
         mensajes = autorizacion.mensajes and autorizacion.mensajes[0] or []
-        self.logger.info('Estado de autorizacion %s' % autorizacion.estado)
+        # self.logger.info('Estado de autorizacion %s' % autorizacion.estado)
         for m in mensajes:
             self.logger.error('{0} {1} {2}'.format(
                 m.identificador, m.mensaje, m.tipo, m.informacionAdicional)

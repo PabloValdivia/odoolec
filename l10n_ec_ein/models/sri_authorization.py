@@ -6,7 +6,8 @@ class SriAuthorization (models.Model):
     _description = 'SRI Authorization'
 
     sri_authorization_code = fields.Char()
-    sri_authorization_date = fields.Date()
+    sri_create_date = fields.Datetime()
+    sri_authorization_date = fields.Datetime()
     processed = fields.Boolean(default=False)
     env_service = fields.Selection(
         [

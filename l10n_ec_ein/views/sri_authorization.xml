@@ -15,10 +15,13 @@
                         </div>
                         <group>
                             <group>
-                                <field name="sri_authorization_date"/>
+                                <field name="sri_create_date" readonly="1"/>
+                                <field name="sri_authorization_date" readonly="1"/>
+
                             </group>
                             <group>
-                                <field name="account_move"/>
+                                 <field name="account_move" readonly="1"/>
+                                <field name="processed" readonly="1"/>
                             </group>
                         </group>
                     </sheet>

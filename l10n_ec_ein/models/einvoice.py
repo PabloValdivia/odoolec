@@ -2,6 +2,7 @@ import base64
 import os
 import logging
 import itertools
+from datetime import datetime
 
 from odoo.addons.account.models.account_payment import MAP_INVOICE_TYPE_PARTNER_TYPE
 from jinja2 import Environment, FileSystemLoader, Template
@@ -176,35 +177,47 @@ class Invoice(models.Model):
             ok, errores = inv_xml.send_receipt(signed_document)
             if not ok:
                 raise UserError(errores)
-            auth, m = inv_xml.request_authorization(access_key)
-            if not auth:
-                msg = ' '.join(list(itertools.chain(*m)))
-                raise UserError(msg)
-            auth_einvoice = self.render_authorized_einvoice(auth)
+
             sri_auth = self.env['sri.authorization'].create({
-                'sri_authorization_code': auth['numeroAutorizacion'],
-                'sri_authorization_date': auth['fechaAutorizacion'],
+                'sri_authorization_code': access_key,
+                'sri_create_date': self.write_date,
                 'account_move': self.id,
                 'env_service': self.company_id.env_service
             })
             self.write({'sri_authorization': sri_auth.id})
+
+    def get_auth(self):
+        to_process = self.env['sri.authorization'].search([
+            ('processed', '=', False)
+        ])
+
+        for data in to_process:
+
+            xml = DocumentXML()
+            auth, m = xml.request_authorization(data.sri_authorization_code)
+            if not auth:
+                msg = ' '.join(list(itertools.chain(*m)))
+                raise UserError(msg)
+            data.write({'sri_authorization_date': auth['fechaAutorizacion'].strftime("%Y-%m-%d %H:%M:%S")})
+            data.write({'processed': True})
+            auth_einvoice = self.render_authorized_einvoice(auth)
             attach = self.add_attachment(auth_einvoice, auth)
             message = """
-            DOCUMENTO ELECTRONICO GENERADO <br><br>
-            CLAVE DE ACCESO: %s <br>
-            NUMERO DE AUTORIZACION %s <br>
-            FECHA AUTORIZACION: %s <br>
-            ESTADO DE AUTORIZACION: %s <br>
-            AMBIENTE: %s <br>
-            """ % (
-                auth['numeroAutorizacion'],
-                auth['numeroAutorizacion'],
-                auth['fechaAutorizacion'],
-                auth['estado'],
-                'PRUEBAS' if self.company_id.env_service == '1' else 'PRODUCCION'
+                        DOCUMENTO ELECTRONICO GENERADO <br><br>
+                        CLAVE DE ACCESO: %s <br>
+                        NUMERO DE AUTORIZACION %s <br>
+                        FECHA AUTORIZACION: %s <br>
+                        ESTADO DE AUTORIZACION: %s <br>
+                        AMBIENTE: %s <br>
+                        """ % (
+                                auth['numeroAutorizacion'],
+                                auth['numeroAutorizacion'],
+                                auth['fechaAutorizacion'],
+                                auth['estado'],
+                                'PRUEBAS' if self.company_id.env_service == '1' else 'PRODUCCION'
             )
-            self.message_post(body=message, attachments=attach)
-            self.send_document(
+            data.account_move.message_post(body=message, attachments=str(auth))
+            data.account_move.send_document(
                 attachments=[a.id for a in attach],
                 tmpl='l10n_ec_ein.email_template_einvoice'
             )
