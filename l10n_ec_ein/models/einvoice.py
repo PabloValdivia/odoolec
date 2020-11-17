@@ -172,17 +172,12 @@ class Invoice(models.Model):
             xades = self.env['sri.key.type'].search([
                 ('company_id', '=', self.company_id.id)
             ])
-            file_binary = obj.company_id.electronic_signature[0].datas
-            pk12_path = '/tmp/sign.p12'
-            pk12_file = open(pk12_path, 'wb')
-            pk12_file.write(base64.b64decode(file_binary))
             x_path = "/tmp/ComprobantesGenerados/"
             if not path.exists(x_path):
                 os.mkdir(x_path)
             to_sign_file = open(x_path+'FACTURA_SRI_'+self.name+".xml", 'w')
             to_sign_file.write(einvoice)
             to_sign_file.close()
-            pk12_file.close()
             signed_document = xades.action_sign(to_sign_file)
             ok, errores = inv_xml.send_receipt(signed_document)
             if not ok:
@@ -212,10 +207,10 @@ class Invoice(models.Model):
                 auth['numeroAutorizacion'],
                 auth['fechaAutorizacion'],
                 auth['estado'],
-                self.company_id.env_service
+                'PRUEBAS' if self.company_id.env_service == '1' else 'PRODUCCION'
             )
             self.message_post(body=message)
-            #vself.send_document(
+            # self.send_document(
             #    attachments=[a.id for a in attach],
             #    tmpl='l10n_ec_ein.email_template_einvoice'
             # )
