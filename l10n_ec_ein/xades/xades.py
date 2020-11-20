@@ -4,8 +4,6 @@ import base64
 import os
 import subprocess
 import logging
-import xades
-import xmlsig
 
 
 class CheckDigit(object):
